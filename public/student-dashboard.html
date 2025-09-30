@@ -1,0 +1,1090 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard - Skint</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <style>
+        .animate-fade-in {
+            animation: fadeIn 1s ease-in;
+        }
+        .animation-delay-200 {
+            animation-delay: 0.2s;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        .tab-button.active {
+            background-color: #3b82f6;
+            color: white;
+        }
+        .resume-tab-button.active {
+            border-color: #3b82f6;
+            color: #3b82f6;
+        }
+        .tab-button:hover {
+            background-color: #f3f4f6;
+        }
+        .resume-tab-button:hover {
+            background-color: #f3f4f6;
+        }
+        .tab-content {
+            animation: fadeIn 0.3s ease-in;
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50">
+    <!-- Header -->
+    <header class="bg-white shadow-sm border-b">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex items-center justify-between">
+                <a href="/" class="flex items-center space-x-2 hover:opacity-80 transition-opacity" onclick="window.location.href='/'">
+                    <div class="w-8 h-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
+                        <span class="text-white font-bold text-lg">S</span>
+                    </div>
+                    <span class="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                        Skint
+                    </span>
+                </a>
+                
+                <div class="flex items-center space-x-4">
+                    <div class="relative">
+                        <button class="flex items-center space-x-2 px-3 py-2 rounded-lg hover:bg-gray-100 transition-colors" onclick="toggleNotifications()">
+                            <i data-lucide="bell" class="h-4 w-4"></i>
+                            <span>Notifications</span>
+                            <span class="bg-red-500 text-white text-xs px-2 py-1 rounded-full">3</span>
+                        </button>
+                        
+                        <!-- Notifications Dropdown -->
+                        <div id="notificationsDropdown" class="absolute right-0 top-12 w-80 bg-white rounded-lg shadow-xl border z-50 hidden">
+                            <div class="p-4 border-b">
+                                <h3 class="font-semibold text-gray-900">Notifications</h3>
+                            </div>
+                            <div class="max-h-64 overflow-y-auto">
+                                <div class="p-4 border-b hover:bg-gray-50 transition-colors">
+                                    <div class="flex items-start space-x-3">
+                                        <div class="w-2 h-2 rounded-full mt-2 bg-green-500"></div>
+                                        <div class="flex-1">
+                                            <p class="font-medium text-sm text-gray-900">New Job Match</p>
+                                            <p class="text-sm text-gray-600">Software Developer at Google</p>
+                                            <p class="text-xs text-gray-400 mt-1">2 hours ago</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="p-4 border-b hover:bg-gray-50 transition-colors">
+                                    <div class="flex items-start space-x-3">
+                                        <div class="w-2 h-2 rounded-full mt-2 bg-blue-500"></div>
+                                        <div class="flex-1">
+                                            <p class="font-medium text-sm text-gray-900">Interview Scheduled</p>
+                                            <p class="text-sm text-gray-600">Frontend Developer at Microsoft</p>
+                                            <p class="text-xs text-gray-400 mt-1">1 day ago</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="p-4 border-b hover:bg-gray-50 transition-colors">
+                                    <div class="flex items-start space-x-3">
+                                        <div class="w-2 h-2 rounded-full mt-2 bg-yellow-500"></div>
+                                        <div class="flex-1">
+                                            <p class="font-medium text-sm text-gray-900">Application Update</p>
+                                            <p class="text-sm text-gray-600">Your application was reviewed</p>
+                                            <p class="text-xs text-gray-400 mt-1">3 days ago</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="p-4 border-t">
+                                <button class="w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition-colors">
+                                    View All Notifications
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="/" class="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors" onclick="window.location.href='/'">
+                        Back to Home
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container mx-auto px-4 py-8">
+        <!-- Welcome Section -->
+        <div class="mb-8 animate-fade-in">
+            <h1 class="text-3xl font-bold text-gray-900 mb-2">
+                Welcome back, Student! 👋
+            </h1>
+            <p class="text-gray-600">
+                Track your internship journey and discover new opportunities
+            </p>
+        </div>
+
+        <!-- Quick Stats -->
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+            <div class="bg-white rounded-lg shadow-sm p-6 animate-fade-in" style="animation-delay: 0.1s">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-sm font-medium text-gray-600">Applications</p>
+                        <p class="text-2xl font-bold text-blue-600">12</p>
+                    </div>
+                    <i data-lucide="briefcase" class="h-8 w-8 text-blue-600"></i>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-sm p-6 animate-fade-in" style="animation-delay: 0.2s">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-sm font-medium text-gray-600">Interviews</p>
+                        <p class="text-2xl font-bold text-green-600">5</p>
+                    </div>
+                    <i data-lucide="calendar" class="h-8 w-8 text-green-600"></i>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-sm p-6 animate-fade-in" style="animation-delay: 0.3s">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-sm font-medium text-gray-600">Success Rate</p>
+                        <p class="text-2xl font-bold text-purple-600">75%</p>
+                    </div>
+                    <i data-lucide="trending-up" class="h-8 w-8 text-purple-600"></i>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-sm p-6 animate-fade-in" style="animation-delay: 0.4s">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-sm font-medium text-gray-600">Badges</p>
+                        <p class="text-2xl font-bold text-orange-600">8</p>
+                    </div>
+                    <i data-lucide="award" class="h-8 w-8 text-orange-600"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content Tabs -->
+        <div class="bg-white rounded-lg shadow-sm">
+            <div class="border-b">
+                <nav class="flex space-x-8 px-6">
+                    <button class="tab-button active py-4 px-2 border-b-2 border-blue-500 text-blue-600 font-medium" onclick="showTab('overview', this)">
+                        Overview
+                    </button>
+                    <button class="tab-button py-4 px-2 text-gray-500 hover:text-gray-700" onclick="showTab('profile', this)">
+                        Profile
+                    </button>
+                    <button class="tab-button py-4 px-2 text-gray-500 hover:text-gray-700" onclick="showTab('resume', this)">
+                        Resume Builder
+                    </button>
+                    <button class="tab-button py-4 px-2 text-gray-500 hover:text-gray-700" onclick="showTab('applications', this)">
+                        Applications
+                    </button>
+                    <button class="tab-button py-4 px-2 text-gray-500 hover:text-gray-700" onclick="showTab('recommendations', this)">
+                        AI Recommendations
+                    </button>
+                    <button class="tab-button py-4 px-2 text-gray-500 hover:text-gray-700" onclick="showTab('progress', this)">
+                        Progress
+                    </button>
+                    <button class="tab-button py-4 px-2 text-gray-500 hover:text-gray-700" onclick="showTab('chatbot', this)">
+                        AI Chat
+                    </button>
+                </nav>
+            </div>
+
+            <!-- Overview Tab -->
+            <div id="overview" class="tab-content active p-6">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+                    <div class="bg-gray-50 rounded-lg p-6">
+                        <h3 class="text-lg font-semibold mb-4 flex items-center">
+                            <i data-lucide="briefcase" class="h-5 w-5 mr-2"></i>
+                            Recent Applications
+                        </h3>
+                        <div class="space-y-3">
+                            <div class="flex items-center justify-between p-3 bg-white rounded-lg border">
+                                <div>
+                                    <h4 class="font-semibold">Software Engineer Intern</h4>
+                                    <p class="text-sm text-gray-600">Google</p>
+                                </div>
+                                <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-sm flex items-center">
+                                    <i data-lucide="star" class="h-3 w-3 mr-1"></i>
+                                    Shortlisted
+                                </span>
+                            </div>
+                            <div class="flex items-center justify-between p-3 bg-white rounded-lg border">
+                                <div>
+                                    <h4 class="font-semibold">Product Manager Intern</h4>
+                                    <p class="text-sm text-gray-600">Microsoft</p>
+                                </div>
+                                <span class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded-full text-sm flex items-center">
+                                    <i data-lucide="calendar" class="h-3 w-3 mr-1"></i>
+                                    Interview Scheduled
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-gray-50 rounded-lg p-6">
+                        <h3 class="text-lg font-semibold mb-4 flex items-center">
+                            <i data-lucide="bell" class="h-5 w-5 mr-2"></i>
+                            Recent Notifications
+                        </h3>
+                        <div class="space-y-3">
+                            <div class="p-3 bg-blue-50 border-l-4 border-blue-500 rounded-lg">
+                                <p class="text-sm">Interview scheduled with Google for Software Engineer Intern</p>
+                                <p class="text-xs text-gray-500 mt-1">2 hours ago</p>
+                            </div>
+                            <div class="p-3 bg-yellow-50 border-l-4 border-yellow-500 rounded-lg">
+                                <p class="text-sm">Application deadline for Microsoft internship in 3 days</p>
+                                <p class="text-xs text-gray-500 mt-1">1 day ago</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Badges Section -->
+                <div class="bg-gray-50 rounded-lg p-6">
+                    <h3 class="text-lg font-semibold mb-4 flex items-center">
+                        <i data-lucide="trophy" class="h-5 w-5 mr-2"></i>
+                        Achievements & Badges
+                    </h3>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <div class="p-4 rounded-lg text-center bg-gradient-to-r from-yellow-100 to-orange-100 border-2 border-yellow-300">
+                            <div class="text-2xl mb-2">🎯</div>
+                            <h4 class="font-semibold text-sm">First Application</h4>
+                            <p class="text-xs text-gray-600 mt-1">Applied to your first internship</p>
+                        </div>
+                        <div class="p-4 rounded-lg text-center bg-gradient-to-r from-yellow-100 to-orange-100 border-2 border-yellow-300">
+                            <div class="text-2xl mb-2">💼</div>
+                            <h4 class="font-semibold text-sm">Interview Pro</h4>
+                            <p class="text-xs text-gray-600 mt-1">Completed 5 interviews</p>
+                        </div>
+                        <div class="p-4 rounded-lg text-center bg-gray-100">
+                            <div class="text-2xl mb-2">⭐</div>
+                            <h4 class="font-semibold text-sm">Skill Master</h4>
+                            <p class="text-xs text-gray-600 mt-1">Added 10+ skills to profile</p>
+                        </div>
+                        <div class="p-4 rounded-lg text-center bg-gray-100">
+                            <div class="text-2xl mb-2">🤝</div>
+                            <h4 class="font-semibold text-sm">Network Builder</h4>
+                            <p class="text-xs text-gray-600 mt-1">Connected with 20+ professionals</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Profile Tab -->
+            <div id="profile" class="tab-content p-6">
+                <div class="bg-gray-50 rounded-lg p-6">
+                    <h3 class="text-lg font-semibold mb-4 flex items-center">
+                        <i data-lucide="user" class="h-5 w-5 mr-2"></i>
+                        Profile Builder
+                    </h3>
+                    <p class="text-gray-600 mb-6">Complete your profile to get better job recommendations</p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Full Name</label>
+                            <input type="text" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500" placeholder="Enter your full name">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Email</label>
+                            <input type="email" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500" placeholder="Enter your email">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">University</label>
+                            <input type="text" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500" placeholder="Enter your university">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Major</label>
+                            <input type="text" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500" placeholder="Enter your major">
+                        </div>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Skills</label>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">JavaScript</span>
+                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">React</span>
+                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Python</span>
+                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Node.js</span>
+                            <button class="bg-gray-100 text-gray-600 px-3 py-1 rounded-full text-sm hover:bg-gray-200 transition-colors">
+                                + Add Skill
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="flex space-x-4">
+                        <button class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors">
+                            Save Profile
+                        </button>
+                        <button class="bg-gray-100 text-gray-700 px-6 py-2 rounded-lg hover:bg-gray-200 transition-colors flex items-center">
+                            <i data-lucide="download" class="h-4 w-4 mr-2"></i>
+                            Generate Resume
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Resume Builder Tab -->
+            <div id="resume" class="tab-content p-6">
+                <div class="bg-gray-50 rounded-lg p-6">
+                    <h3 class="text-lg font-semibold mb-4 flex items-center">
+                        <i data-lucide="file-text" class="h-5 w-5 mr-2"></i>
+                        Professional Resume Builder
+                    </h3>
+                    <p class="text-gray-600 mb-6">Create, edit, and optimize your resume with our AI-powered tools</p>
+                    
+                    <!-- Resume Builder Tabs -->
+                    <div class="mb-6">
+                        <div class="flex space-x-4 border-b">
+                            <button class="resume-tab-button active py-2 px-4 border-b-2 border-blue-500 text-blue-600 font-medium" onclick="showResumeTab('builder', this)">
+                                Resume Builder
+                            </button>
+                            <button class="resume-tab-button py-2 px-4 text-gray-500 hover:text-gray-700" onclick="showResumeTab('parser', this)">
+                                Resume Parser
+                            </button>
+                            <button class="resume-tab-button py-2 px-4 text-gray-500 hover:text-gray-700" onclick="showResumeTab('ats', this)">
+                                ATS Checker
+                            </button>
+                            <button class="resume-tab-button py-2 px-4 text-gray-500 hover:text-gray-700" onclick="showResumeTab('templates', this)">
+                                Templates
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Resume Builder Content -->
+                    <div id="resume-builder" class="resume-tab-content">
+                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                            <!-- Personal Information -->
+                            <div class="bg-white rounded-lg p-6">
+                                <h4 class="text-lg font-semibold mb-4 flex items-center">
+                                    <i data-lucide="user" class="h-5 w-5 mr-2"></i>
+                                    Personal Information
+                                </h4>
+                                <div class="space-y-4">
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-2">Full Name</label>
+                                        <input type="text" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Enter your full name">
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-2">Email</label>
+                                        <input type="email" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Enter your email">
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-2">Phone</label>
+                                        <input type="tel" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Enter your phone number">
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-2">Location</label>
+                                        <input type="text" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Enter your location">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Professional Summary -->
+                            <div class="bg-white rounded-lg p-6">
+                                <h4 class="text-lg font-semibold mb-4 flex items-center">
+                                    <i data-lucide="file-text" class="h-5 w-5 mr-2"></i>
+                                    Professional Summary
+                                </h4>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">Summary</label>
+                                    <textarea rows="4" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Write a brief professional summary..."></textarea>
+                                </div>
+                            </div>
+
+                            <!-- Experience -->
+                            <div class="bg-white rounded-lg p-6">
+                                <h4 class="text-lg font-semibold mb-4 flex items-center">
+                                    <i data-lucide="briefcase" class="h-5 w-5 mr-2"></i>
+                                    Work Experience
+                                </h4>
+                                <div class="space-y-4">
+                                    <div class="border border-gray-200 rounded-lg p-4">
+                                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                                            <div>
+                                                <label class="block text-sm font-medium text-gray-700 mb-2">Job Title</label>
+                                                <input type="text" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="e.g., Software Developer">
+                                            </div>
+                                            <div>
+                                                <label class="block text-sm font-medium text-gray-700 mb-2">Company</label>
+                                                <input type="text" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="e.g., Tech Corp">
+                                            </div>
+                                        </div>
+                                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                                            <div>
+                                                <label class="block text-sm font-medium text-gray-700 mb-2">Start Date</label>
+                                                <input type="date" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                            </div>
+                                            <div>
+                                                <label class="block text-sm font-medium text-gray-700 mb-2">End Date</label>
+                                                <input type="date" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <label class="block text-sm font-medium text-gray-700 mb-2">Description</label>
+                                            <textarea rows="3" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Describe your responsibilities and achievements..."></textarea>
+                                        </div>
+                                    </div>
+                                    <button class="w-full bg-gray-100 text-gray-700 py-2 px-4 rounded-lg hover:bg-gray-200 transition-colors flex items-center justify-center">
+                                        <i data-lucide="plus" class="h-4 w-4 mr-2"></i>
+                                        Add Another Experience
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Education -->
+                            <div class="bg-white rounded-lg p-6">
+                                <h4 class="text-lg font-semibold mb-4 flex items-center">
+                                    <i data-lucide="graduation-cap" class="h-5 w-5 mr-2"></i>
+                                    Education
+                                </h4>
+                                <div class="space-y-4">
+                                    <div class="border border-gray-200 rounded-lg p-4">
+                                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                                            <div>
+                                                <label class="block text-sm font-medium text-gray-700 mb-2">Degree</label>
+                                                <input type="text" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="e.g., Bachelor of Computer Science">
+                                            </div>
+                                            <div>
+                                                <label class="block text-sm font-medium text-gray-700 mb-2">Institution</label>
+                                                <input type="text" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="e.g., University Name">
+                                            </div>
+                                        </div>
+                                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                                            <div>
+                                                <label class="block text-sm font-medium text-gray-700 mb-2">Start Date</label>
+                                                <input type="date" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                            </div>
+                                            <div>
+                                                <label class="block text-sm font-medium text-gray-700 mb-2">End Date</label>
+                                                <input type="date" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <label class="block text-sm font-medium text-gray-700 mb-2">GPA (Optional)</label>
+                                            <input type="text" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="e.g., 3.8">
+                                        </div>
+                                    </div>
+                                    <button class="w-full bg-gray-100 text-gray-700 py-2 px-4 rounded-lg hover:bg-gray-200 transition-colors flex items-center justify-center">
+                                        <i data-lucide="plus" class="h-4 w-4 mr-2"></i>
+                                        Add Another Education
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="mt-8 flex justify-center space-x-4">
+                            <button class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors flex items-center">
+                                <i data-lucide="save" class="h-4 w-4 mr-2"></i>
+                                Save Resume
+                            </button>
+                            <button class="bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition-colors flex items-center">
+                                <i data-lucide="download" class="h-4 w-4 mr-2"></i>
+                                Download PDF
+                            </button>
+                            <button class="bg-purple-600 text-white px-6 py-3 rounded-lg hover:bg-purple-700 transition-colors flex items-center">
+                                <i data-lucide="eye" class="h-4 w-4 mr-2"></i>
+                                Preview Resume
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Resume Parser Content -->
+                    <div id="resume-parser" class="resume-tab-content" style="display: none;">
+                        <div class="bg-white rounded-lg p-6">
+                            <h4 class="text-lg font-semibold mb-4 flex items-center">
+                                <i data-lucide="upload" class="h-5 w-5 mr-2"></i>
+                                Upload & Parse Resume
+                            </h4>
+                            <div class="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center">
+                                <i data-lucide="file-text" class="h-12 w-12 text-gray-400 mx-auto mb-4"></i>
+                                <p class="text-gray-600 mb-4">Upload your resume to automatically extract information</p>
+                                <button class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors">
+                                    Choose File
+                                </button>
+                                <p class="text-sm text-gray-500 mt-2">Supports PDF, DOC, DOCX formats</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ATS Checker Content -->
+                    <div id="ats-checker" class="resume-tab-content" style="display: none;">
+                        <div class="bg-white rounded-lg p-6">
+                            <h4 class="text-lg font-semibold mb-4 flex items-center">
+                                <i data-lucide="shield-check" class="h-5 w-5 mr-2"></i>
+                                ATS Compatibility Check
+                            </h4>
+                            <div class="space-y-4">
+                                <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
+                                    <div class="flex items-center">
+                                        <i data-lucide="alert-triangle" class="h-5 w-5 text-yellow-600 mr-2"></i>
+                                        <span class="font-medium text-yellow-800">Missing Keywords</span>
+                                    </div>
+                                    <p class="text-yellow-700 mt-2">Consider adding: JavaScript, React, Node.js</p>
+                                </div>
+                                <div class="bg-green-50 border border-green-200 rounded-lg p-4">
+                                    <div class="flex items-center">
+                                        <i data-lucide="check-circle" class="h-5 w-5 text-green-600 mr-2"></i>
+                                        <span class="font-medium text-green-800">Good Formatting</span>
+                                    </div>
+                                    <p class="text-green-700 mt-2">Your resume has proper structure and formatting</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Templates Content -->
+                    <div id="templates" class="resume-tab-content" style="display: none;">
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                            <div class="bg-white rounded-lg p-6 border border-gray-200 hover:shadow-md transition-shadow cursor-pointer">
+                                <div class="text-center">
+                                    <i data-lucide="file-text" class="h-12 w-12 text-blue-600 mx-auto mb-4"></i>
+                                    <h5 class="font-semibold mb-2">Professional</h5>
+                                    <p class="text-sm text-gray-600 mb-4">Clean and modern design</p>
+                                    <button class="w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition-colors">
+                                        Use Template
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="bg-white rounded-lg p-6 border border-gray-200 hover:shadow-md transition-shadow cursor-pointer">
+                                <div class="text-center">
+                                    <i data-lucide="file-text" class="h-12 w-12 text-green-600 mx-auto mb-4"></i>
+                                    <h5 class="font-semibold mb-2">Creative</h5>
+                                    <p class="text-sm text-gray-600 mb-4">Colorful and creative design</p>
+                                    <button class="w-full bg-green-600 text-white py-2 px-4 rounded-lg hover:bg-green-700 transition-colors">
+                                        Use Template
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="bg-white rounded-lg p-6 border border-gray-200 hover:shadow-md transition-shadow cursor-pointer">
+                                <div class="text-center">
+                                    <i data-lucide="file-text" class="h-12 w-12 text-purple-600 mx-auto mb-4"></i>
+                                    <h5 class="font-semibold mb-2">Minimalist</h5>
+                                    <p class="text-sm text-gray-600 mb-4">Simple and elegant design</p>
+                                    <button class="w-full bg-purple-600 text-white py-2 px-4 rounded-lg hover:bg-purple-700 transition-colors">
+                                        Use Template
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Applications Tab -->
+            <div id="applications" class="tab-content p-6">
+                <div class="bg-gray-50 rounded-lg p-6">
+                    <div class="flex items-center justify-between mb-6">
+                        <h3 class="text-lg font-semibold flex items-center">
+                            <i data-lucide="briefcase" class="h-5 w-5 mr-2"></i>
+                            Application Tracker
+                        </h3>
+                        <div class="flex space-x-2">
+                            <button class="bg-gray-100 text-gray-700 px-3 py-2 rounded-lg hover:bg-gray-200 transition-colors flex items-center">
+                                <i data-lucide="search" class="h-4 w-4 mr-1"></i>
+                                Search
+                            </button>
+                            <button class="bg-gray-100 text-gray-700 px-3 py-2 rounded-lg hover:bg-gray-200 transition-colors flex items-center">
+                                <i data-lucide="filter" class="h-4 w-4 mr-1"></i>
+                                Filter
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <div class="bg-white border rounded-lg p-4 hover:shadow-md transition-shadow">
+                            <div class="flex items-center justify-between">
+                                <div class="flex-1">
+                                    <h4 class="font-semibold text-lg">Software Engineer Intern</h4>
+                                    <p class="text-gray-600">Google</p>
+                                    <div class="flex items-center space-x-4 mt-2 text-sm text-gray-500">
+                                        <span>Applied: 2024-01-15</span>
+                                        <span>Deadline: 2024-02-15</span>
+                                    </div>
+                                </div>
+                                <div class="flex items-center space-x-4">
+                                    <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm flex items-center">
+                                        <i data-lucide="star" class="h-3 w-3 mr-1"></i>
+                                        Shortlisted
+                                    </span>
+                                    <button class="bg-gray-100 text-gray-700 px-3 py-2 rounded-lg hover:bg-gray-200 transition-colors">
+                                        View Details
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Enhanced AI Recommendations Tab -->
+            <div id="recommendations" class="tab-content p-6">
+                <!-- Header Section -->
+                <div class="bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg p-6 mb-6 shadow-lg">
+                    <h3 class="text-2xl font-bold mb-2 flex items-center">
+                        <div class="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg flex items-center justify-center mr-3 animate-pulse">
+                            <i data-lucide="zap" class="h-5 w-5 text-white"></i>
+                        </div>
+                        AI-Powered Job Recommendations
+                    </h3>
+                    <p class="text-lg text-gray-600">🎯 Personalized opportunities based on your profile and preferences</p>
+                </div>
+
+                <!-- Enhanced Recommendations Grid -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <!-- Google Software Engineer -->
+                    <div class="bg-white rounded-lg shadow-lg hover:shadow-2xl transition-all duration-500 hover:scale-105 overflow-hidden group">
+                        <div class="absolute inset-0 bg-gradient-to-br from-blue-500 to-cyan-500 opacity-0 group-hover:opacity-5 transition-opacity duration-500"></div>
+                        <div class="p-6 relative z-10">
+                            <div class="flex items-start justify-between mb-4">
+                                <div class="flex items-center space-x-3">
+                                    <div class="text-3xl group-hover:scale-110 transition-transform">🔍</div>
+                                    <div>
+                                        <h4 class="font-bold text-lg group-hover:text-gray-800 transition-colors">Software Engineer Intern</h4>
+                                        <p class="text-gray-600 font-medium">Google</p>
+                                    </div>
+                                </div>
+                                <div class="px-3 py-1 rounded-full bg-gradient-to-r from-blue-500 to-cyan-500 text-white text-sm font-medium group-hover:scale-105 transition-transform">
+                                    95% Match
+                                </div>
+                            </div>
+                            
+                            <p class="text-gray-600 mb-4 text-sm">Work on cutting-edge AI projects with Google's engineering team</p>
+                            
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">💰 $8,000/month</span>
+                                <span class="border border-blue-200 text-blue-700 px-3 py-1 rounded-full text-sm">Internship</span>
+                            </div>
+                            
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="bg-blue-50 text-blue-700 px-3 py-1 rounded-full text-sm hover:bg-blue-100 transition-colors">React</span>
+                                <span class="bg-blue-50 text-blue-700 px-3 py-1 rounded-full text-sm hover:bg-blue-100 transition-colors">Python</span>
+                                <span class="bg-blue-50 text-blue-700 px-3 py-1 rounded-full text-sm hover:bg-blue-100 transition-colors">Machine Learning</span>
+                            </div>
+                            
+                            <div class="flex space-x-2">
+                                <button class="flex-1 bg-gradient-to-r from-blue-500 to-cyan-500 hover:opacity-90 text-white py-2 px-4 rounded-lg transition-all duration-300 hover:scale-105">
+                                    Apply Now
+                                </button>
+                                <button class="bg-gray-100 text-gray-700 py-2 px-3 rounded-lg hover:bg-gray-200 transition-colors hover:scale-105">
+                                    <i data-lucide="bookmark" class="h-4 w-4"></i>
+                                </button>
+                                <button class="bg-gray-100 text-gray-700 py-2 px-3 rounded-lg hover:bg-gray-200 transition-colors hover:scale-105">
+                                    <i data-lucide="share" class="h-4 w-4"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Microsoft Frontend Developer -->
+                    <div class="bg-white rounded-lg shadow-lg hover:shadow-2xl transition-all duration-500 hover:scale-105 overflow-hidden group">
+                        <div class="absolute inset-0 bg-gradient-to-br from-green-500 to-emerald-500 opacity-0 group-hover:opacity-5 transition-opacity duration-500"></div>
+                        <div class="p-6 relative z-10">
+                            <div class="flex items-start justify-between mb-4">
+                                <div class="flex items-center space-x-3">
+                                    <div class="text-3xl group-hover:scale-110 transition-transform">🪟</div>
+                                    <div>
+                                        <h4 class="font-bold text-lg group-hover:text-gray-800 transition-colors">Frontend Developer</h4>
+                                        <p class="text-gray-600 font-medium">Microsoft</p>
+                                    </div>
+                                </div>
+                                <div class="px-3 py-1 rounded-full bg-gradient-to-r from-green-500 to-emerald-500 text-white text-sm font-medium group-hover:scale-105 transition-transform">
+                                    88% Match
+                                </div>
+                            </div>
+                            
+                            <p class="text-gray-600 mb-4 text-sm">Build modern web applications using Microsoft's latest technologies</p>
+                            
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">💰 $6,500/month</span>
+                                <span class="border border-blue-200 text-blue-700 px-3 py-1 rounded-full text-sm">Internship</span>
+                            </div>
+                            
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="bg-green-50 text-green-700 px-3 py-1 rounded-full text-sm hover:bg-green-100 transition-colors">React</span>
+                                <span class="bg-green-50 text-green-700 px-3 py-1 rounded-full text-sm hover:bg-green-100 transition-colors">TypeScript</span>
+                                <span class="bg-green-50 text-green-700 px-3 py-1 rounded-full text-sm hover:bg-green-100 transition-colors">Azure</span>
+                            </div>
+                            
+                            <div class="flex space-x-2">
+                                <button class="flex-1 bg-gradient-to-r from-green-500 to-emerald-500 hover:opacity-90 text-white py-2 px-4 rounded-lg transition-all duration-300 hover:scale-105">
+                                    Apply Now
+                                </button>
+                                <button class="bg-gray-100 text-gray-700 py-2 px-3 rounded-lg hover:bg-gray-200 transition-colors hover:scale-105">
+                                    <i data-lucide="bookmark" class="h-4 w-4"></i>
+                                </button>
+                                <button class="bg-gray-100 text-gray-700 py-2 px-3 rounded-lg hover:bg-gray-200 transition-colors hover:scale-105">
+                                    <i data-lucide="share" class="h-4 w-4"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Amazon Data Science -->
+                    <div class="bg-white rounded-lg shadow-lg hover:shadow-2xl transition-all duration-500 hover:scale-105 overflow-hidden group">
+                        <div class="absolute inset-0 bg-gradient-to-br from-orange-500 to-yellow-500 opacity-0 group-hover:opacity-5 transition-opacity duration-500"></div>
+                        <div class="p-6 relative z-10">
+                            <div class="flex items-start justify-between mb-4">
+                                <div class="flex items-center space-x-3">
+                                    <div class="text-3xl group-hover:scale-110 transition-transform">📦</div>
+                                    <div>
+                                        <h4 class="font-bold text-lg group-hover:text-gray-800 transition-colors">Data Science Intern</h4>
+                                        <p class="text-gray-600 font-medium">Amazon</p>
+                                    </div>
+                                </div>
+                                <div class="px-3 py-1 rounded-full bg-gradient-to-r from-orange-500 to-yellow-500 text-white text-sm font-medium group-hover:scale-105 transition-transform">
+                                    92% Match
+                                </div>
+                            </div>
+                            
+                            <p class="text-gray-600 mb-4 text-sm">Analyze big data to drive business insights and recommendations</p>
+                            
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">💰 $7,200/month</span>
+                                <span class="border border-blue-200 text-blue-700 px-3 py-1 rounded-full text-sm">Internship</span>
+                            </div>
+                            
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="bg-orange-50 text-orange-700 px-3 py-1 rounded-full text-sm hover:bg-orange-100 transition-colors">Python</span>
+                                <span class="bg-orange-50 text-orange-700 px-3 py-1 rounded-full text-sm hover:bg-orange-100 transition-colors">SQL</span>
+                                <span class="bg-orange-50 text-orange-700 px-3 py-1 rounded-full text-sm hover:bg-orange-100 transition-colors">AWS</span>
+                            </div>
+                            
+                            <div class="flex space-x-2">
+                                <button class="flex-1 bg-gradient-to-r from-orange-500 to-yellow-500 hover:opacity-90 text-white py-2 px-4 rounded-lg transition-all duration-300 hover:scale-105">
+                                    Apply Now
+                                </button>
+                                <button class="bg-gray-100 text-gray-700 py-2 px-3 rounded-lg hover:bg-gray-200 transition-colors hover:scale-105">
+                                    <i data-lucide="bookmark" class="h-4 w-4"></i>
+                                </button>
+                                <button class="bg-gray-100 text-gray-700 py-2 px-3 rounded-lg hover:bg-gray-200 transition-colors hover:scale-105">
+                                    <i data-lucide="share" class="h-4 w-4"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Netflix Full Stack -->
+                    <div class="bg-white rounded-lg shadow-lg hover:shadow-2xl transition-all duration-500 hover:scale-105 overflow-hidden group">
+                        <div class="absolute inset-0 bg-gradient-to-br from-red-500 to-pink-500 opacity-0 group-hover:opacity-5 transition-opacity duration-500"></div>
+                        <div class="p-6 relative z-10">
+                            <div class="flex items-start justify-between mb-4">
+                                <div class="flex items-center space-x-3">
+                                    <div class="text-3xl group-hover:scale-110 transition-transform">🎬</div>
+                                    <div>
+                                        <h4 class="font-bold text-lg group-hover:text-gray-800 transition-colors">Full Stack Developer</h4>
+                                        <p class="text-gray-600 font-medium">Netflix</p>
+                                    </div>
+                                </div>
+                                <div class="px-3 py-1 rounded-full bg-gradient-to-r from-red-500 to-pink-500 text-white text-sm font-medium group-hover:scale-105 transition-transform">
+                                    85% Match
+                                </div>
+                            </div>
+                            
+                            <p class="text-gray-600 mb-4 text-sm">Develop scalable applications for millions of users worldwide</p>
+                            
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">💰 $7,800/month</span>
+                                <span class="border border-blue-200 text-blue-700 px-3 py-1 rounded-full text-sm">Internship</span>
+                            </div>
+                            
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="bg-red-50 text-red-700 px-3 py-1 rounded-full text-sm hover:bg-red-100 transition-colors">React</span>
+                                <span class="bg-red-50 text-red-700 px-3 py-1 rounded-full text-sm hover:bg-red-100 transition-colors">Node.js</span>
+                                <span class="bg-red-50 text-red-700 px-3 py-1 rounded-full text-sm hover:bg-red-100 transition-colors">GraphQL</span>
+                            </div>
+                            
+                            <div class="flex space-x-2">
+                                <button class="flex-1 bg-gradient-to-r from-red-500 to-pink-500 hover:opacity-90 text-white py-2 px-4 rounded-lg transition-all duration-300 hover:scale-105">
+                                    Apply Now
+                                </button>
+                                <button class="bg-gray-100 text-gray-700 py-2 px-3 rounded-lg hover:bg-gray-200 transition-colors hover:scale-105">
+                                    <i data-lucide="bookmark" class="h-4 w-4"></i>
+                                </button>
+                                <button class="bg-gray-100 text-gray-700 py-2 px-3 rounded-lg hover:bg-gray-200 transition-colors hover:scale-105">
+                                    <i data-lucide="share" class="h-4 w-4"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- OpenAI AI/ML Engineer -->
+                    <div class="bg-white rounded-lg shadow-lg hover:shadow-2xl transition-all duration-500 hover:scale-105 overflow-hidden group">
+                        <div class="absolute inset-0 bg-gradient-to-br from-purple-500 to-indigo-500 opacity-0 group-hover:opacity-5 transition-opacity duration-500"></div>
+                        <div class="p-6 relative z-10">
+                            <div class="flex items-start justify-between mb-4">
+                                <div class="flex items-center space-x-3">
+                                    <div class="text-3xl group-hover:scale-110 transition-transform">🤖</div>
+                                    <div>
+                                        <h4 class="font-bold text-lg group-hover:text-gray-800 transition-colors">AI/ML Engineer</h4>
+                                        <p class="text-gray-600 font-medium">OpenAI</p>
+                                    </div>
+                                </div>
+                                <div class="px-3 py-1 rounded-full bg-gradient-to-r from-purple-500 to-indigo-500 text-white text-sm font-medium group-hover:scale-105 transition-transform">
+                                    98% Match
+                                </div>
+                            </div>
+                            
+                            <p class="text-gray-600 mb-4 text-sm">Work on the next generation of artificial intelligence systems</p>
+                            
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">💰 $9,000/month</span>
+                                <span class="border border-blue-200 text-blue-700 px-3 py-1 rounded-full text-sm">Internship</span>
+                            </div>
+                            
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="bg-purple-50 text-purple-700 px-3 py-1 rounded-full text-sm hover:bg-purple-100 transition-colors">Python</span>
+                                <span class="bg-purple-50 text-purple-700 px-3 py-1 rounded-full text-sm hover:bg-purple-100 transition-colors">TensorFlow</span>
+                                <span class="bg-purple-50 text-purple-700 px-3 py-1 rounded-full text-sm hover:bg-purple-100 transition-colors">NLP</span>
+                            </div>
+                            
+                            <div class="flex space-x-2">
+                                <button class="flex-1 bg-gradient-to-r from-purple-500 to-indigo-500 hover:opacity-90 text-white py-2 px-4 rounded-lg transition-all duration-300 hover:scale-105">
+                                    Apply Now
+                                </button>
+                                <button class="bg-gray-100 text-gray-700 py-2 px-3 rounded-lg hover:bg-gray-200 transition-colors hover:scale-105">
+                                    <i data-lucide="bookmark" class="h-4 w-4"></i>
+                                </button>
+                                <button class="bg-gray-100 text-gray-700 py-2 px-3 rounded-lg hover:bg-gray-200 transition-colors hover:scale-105">
+                                    <i data-lucide="share" class="h-4 w-4"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Docker DevOps Engineer -->
+                    <div class="bg-white rounded-lg shadow-lg hover:shadow-2xl transition-all duration-500 hover:scale-105 overflow-hidden group">
+                        <div class="absolute inset-0 bg-gradient-to-br from-teal-500 to-cyan-500 opacity-0 group-hover:opacity-5 transition-opacity duration-500"></div>
+                        <div class="p-6 relative z-10">
+                            <div class="flex items-start justify-between mb-4">
+                                <div class="flex items-center space-x-3">
+                                    <div class="text-3xl group-hover:scale-110 transition-transform">🐳</div>
+                                    <div>
+                                        <h4 class="font-bold text-lg group-hover:text-gray-800 transition-colors">DevOps Engineer</h4>
+                                        <p class="text-gray-600 font-medium">Docker</p>
+                                    </div>
+                                </div>
+                                <div class="px-3 py-1 rounded-full bg-gradient-to-r from-teal-500 to-cyan-500 text-white text-sm font-medium group-hover:scale-105 transition-transform">
+                                    82% Match
+                                </div>
+                            </div>
+                            
+                            <p class="text-gray-600 mb-4 text-sm">Build and maintain cloud infrastructure for containerized applications</p>
+                            
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">💰 $6,800/month</span>
+                                <span class="border border-blue-200 text-blue-700 px-3 py-1 rounded-full text-sm">Internship</span>
+                            </div>
+                            
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="bg-teal-50 text-teal-700 px-3 py-1 rounded-full text-sm hover:bg-teal-100 transition-colors">Docker</span>
+                                <span class="bg-teal-50 text-teal-700 px-3 py-1 rounded-full text-sm hover:bg-teal-100 transition-colors">Kubernetes</span>
+                                <span class="bg-teal-50 text-teal-700 px-3 py-1 rounded-full text-sm hover:bg-teal-100 transition-colors">AWS</span>
+                            </div>
+                            
+                            <div class="flex space-x-2">
+                                <button class="flex-1 bg-gradient-to-r from-teal-500 to-cyan-500 hover:opacity-90 text-white py-2 px-4 rounded-lg transition-all duration-300 hover:scale-105">
+                                    Apply Now
+                                </button>
+                                <button class="bg-gray-100 text-gray-700 py-2 px-3 rounded-lg hover:bg-gray-200 transition-colors hover:scale-105">
+                                    <i data-lucide="bookmark" class="h-4 w-4"></i>
+                                </button>
+                                <button class="bg-gray-100 text-gray-700 py-2 px-3 rounded-lg hover:bg-gray-200 transition-colors hover:scale-105">
+                                    <i data-lucide="share" class="h-4 w-4"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Progress Tab -->
+            <div id="progress" class="tab-content p-6">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <div class="bg-gray-50 rounded-lg p-6">
+                        <h3 class="text-lg font-semibold mb-4">Application Success Rate</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-center justify-between">
+                                <span>Applications</span>
+                                <span class="font-semibold">12</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-blue-600 h-2 rounded-full" style="width: 75%"></div>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span>Interviews</span>
+                                <span class="font-semibold">5</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-green-600 h-2 rounded-full" style="width: 42%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-gray-50 rounded-lg p-6">
+                        <h3 class="text-lg font-semibold mb-4">Interview History</h3>
+                        <div class="space-y-4">
+                            <div class="bg-white border rounded-lg p-4">
+                                <div class="flex items-center justify-between">
+                                    <div>
+                                        <h4 class="font-semibold">Software Engineer Intern</h4>
+                                        <p class="text-gray-600">Google</p>
+                                        <p class="text-sm text-gray-500">2024-02-10</p>
+                                    </div>
+                                    <div class="text-right">
+                                        <div class="flex items-center">
+                                            <i data-lucide="star" class="h-4 w-4 text-yellow-500 mr-1"></i>
+                                            <span class="font-semibold">4.5</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="text-sm text-gray-600 mt-2">Strong technical skills, good communication</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- AI Chatbot Tab -->
+            <div id="chatbot" class="tab-content p-6">
+                <div class="bg-gray-50 rounded-lg p-6">
+                    <h3 class="text-lg font-semibold mb-4 flex items-center">
+                        <i data-lucide="message-circle" class="h-5 w-5 mr-2"></i>
+                        AI Career Guidance Chatbot
+                    </h3>
+                    <p class="text-gray-600 mb-6">Get personalized career advice and guidance</p>
+                    
+                    <div class="h-96 border rounded-lg p-4 bg-gray-50">
+                        <div class="space-y-4">
+                            <div class="flex items-start space-x-2">
+                                <div class="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center">
+                                    <span class="text-white text-sm font-bold">AI</span>
+                                </div>
+                                <div class="bg-white p-3 rounded-lg shadow-sm max-w-xs">
+                                    <p class="text-sm">Hello! I'm your AI career advisor. How can I help you today?</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-2 justify-end">
+                                <div class="bg-blue-600 text-white p-3 rounded-lg shadow-sm max-w-xs">
+                                    <p class="text-sm">What skills should I focus on for software engineering internships?</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-2">
+                                <div class="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center">
+                                    <span class="text-white text-sm font-bold">AI</span>
+                                </div>
+                                <div class="bg-white p-3 rounded-lg shadow-sm max-w-xs">
+                                    <p class="text-sm">For software engineering internships, focus on: 1) Programming languages (Python, Java, JavaScript), 2) Data structures & algorithms, 3) Version control (Git), 4) Web development frameworks, and 5) Problem-solving skills.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex space-x-2 mt-4">
+                        <input type="text" placeholder="Ask me anything about your career..." class="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                        <button class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors">
+                            Send
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+        
+        // Notifications dropdown functionality
+        function toggleNotifications() {
+            const dropdown = document.getElementById('notificationsDropdown');
+            if (dropdown.classList.contains('hidden')) {
+                dropdown.classList.remove('hidden');
+            } else {
+                dropdown.classList.add('hidden');
+            }
+        }
+        
+        // Close notifications dropdown when clicking outside
+        document.addEventListener('click', function(event) {
+            const dropdown = document.getElementById('notificationsDropdown');
+            const button = event.target.closest('button');
+            if (!dropdown.contains(event.target) && !button) {
+                dropdown.classList.add('hidden');
+            }
+        });
+        
+        // Tab functionality
+        function showTab(tabName, clickedButton) {
+            console.log('Switching to tab:', tabName); // Debug log
+            
+            // Hide all tab contents
+            const tabContents = document.querySelectorAll('.tab-content');
+            tabContents.forEach(content => {
+                content.classList.remove('active');
+                content.style.display = 'none';
+            });
+            
+            // Remove active class from all tab buttons
+            const tabButtons = document.querySelectorAll('.tab-button');
+            tabButtons.forEach(button => {
+                button.classList.remove('active');
+                button.classList.remove('border-blue-500', 'text-blue-600');
+                button.classList.add('text-gray-500');
+            });
+            
+            // Show selected tab content
+            const targetTab = document.getElementById(tabName);
+            if (targetTab) {
+                targetTab.classList.add('active');
+                targetTab.style.display = 'block';
+                console.log('Tab shown:', tabName); // Debug log
+            } else {
+                console.error('Tab not found:', tabName); // Debug log
+            }
+            
+            // Add active class to clicked button
+            if (clickedButton) {
+                clickedButton.classList.add('active', 'border-blue-500', 'text-blue-600');
+                clickedButton.classList.remove('text-gray-500');
+            }
+        }
+
+        function showResumeTab(tabName, clickedButton) {
+            // Hide all resume tab contents
+            const resumeTabContents = document.querySelectorAll('.resume-tab-content');
+            resumeTabContents.forEach(content => {
+                content.style.display = 'none';
+            });
+            
+            // Remove active class from all resume tab buttons
+            const resumeTabButtons = document.querySelectorAll('.resume-tab-button');
+            resumeTabButtons.forEach(button => {
+                button.classList.remove('active');
+                button.classList.remove('border-blue-500', 'text-blue-600');
+                button.classList.add('text-gray-500');
+            });
+            
+            // Show selected resume tab content
+            const tabId = tabName === 'builder' ? 'resume-builder' : 
+                         tabName === 'parser' ? 'resume-parser' :
+                         tabName === 'ats' ? 'ats-checker' : 'templates';
+            document.getElementById(tabId).style.display = 'block';
+            
+            // Add active class to clicked button
+            if (clickedButton) {
+                clickedButton.classList.add('active', 'border-blue-500', 'text-blue-600');
+                clickedButton.classList.remove('text-gray-500');
+            }
+        }
+    </script>
+</body>
+</html>

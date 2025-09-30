@@ -1,0 +1,6 @@
+<svg width="400" height="300" viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="400" height="300" fill="#F3E5F5"/>
+  <rect x="120" y="100" width="160" height="120" rx="10" fill="#9C27B0"/>
+  <text x="200" y="180" text-anchor="middle" font-family="Arial" font-size="16" fill="white">Building</text>
+  <text x="200" y="280" text-anchor="middle" font-family="Arial" font-size="20" fill="#7B1FA2">Placement Cell</text>
+</svg>

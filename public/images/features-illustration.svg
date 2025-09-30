@@ -1,0 +1,104 @@
+<svg width="800" height="400" viewBox="0 0 800 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3B82F6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#8B5CF6;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="gradient2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#10B981;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#3B82F6;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="gradient3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#F59E0B;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#EF4444;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="gradient4" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8B5CF6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#EC4899;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background elements -->
+  <rect x="0" y="0" width="800" height="400" fill="url(#gradient1)" opacity="0.05"/>
+  
+  <!-- Dashboard mockup -->
+  <g transform="translate(50, 50)">
+    <rect x="0" y="0" width="200" height="120" rx="10" fill="white" stroke="url(#gradient1)" stroke-width="2"/>
+    <rect x="10" y="10" width="180" height="20" rx="5" fill="url(#gradient1)" opacity="0.2"/>
+    <rect x="10" y="40" width="60" height="15" rx="3" fill="url(#gradient1)" opacity="0.3"/>
+    <rect x="80" y="40" width="60" height="15" rx="3" fill="url(#gradient2)" opacity="0.3"/>
+    <rect x="150" y="40" width="40" height="15" rx="3" fill="url(#gradient3)" opacity="0.3"/>
+    <rect x="10" y="65" width="180" height="40" rx="5" fill="url(#gradient1)" opacity="0.1"/>
+    <circle cx="20" cy="85" r="8" fill="url(#gradient1)"/>
+    <rect x="35" y="75" width="100" height="8" rx="2" fill="url(#gradient1)" opacity="0.4"/>
+    <rect x="35" y="90" width="80" height="8" rx="2" fill="url(#gradient1)" opacity="0.2"/>
+  </g>
+  
+  <!-- AI Brain -->
+  <g transform="translate(300, 80)">
+    <circle cx="40" cy="40" r="35" fill="url(#gradient2)" opacity="0.9"/>
+    <path d="M20 40 Q40 20 60 40 Q40 60 20 40" fill="white" opacity="0.8"/>
+    <circle cx="35" cy="35" r="4" fill="url(#gradient1)"/>
+    <circle cx="45" cy="35" r="4" fill="url(#gradient1)"/>
+    <path d="M30 50 Q40 45 50 50" stroke="url(#gradient1)" stroke-width="2" fill="none"/>
+  </g>
+  
+  <!-- Analytics chart -->
+  <g transform="translate(450, 60)">
+    <rect x="0" y="0" width="150" height="100" rx="10" fill="white" stroke="url(#gradient3)" stroke-width="2"/>
+    <rect x="10" y="10" width="130" height="15" rx="3" fill="url(#gradient3)" opacity="0.2"/>
+    <!-- Chart bars -->
+    <rect x="20" y="60" width="15" height="30" rx="2" fill="url(#gradient1)"/>
+    <rect x="40" y="45" width="15" height="45" rx="2" fill="url(#gradient2)"/>
+    <rect x="60" y="35" width="15" height="55" rx="2" fill="url(#gradient3)"/>
+    <rect x="80" y="50" width="15" height="40" rx="2" fill="url(#gradient4)"/>
+    <rect x="100" y="25" width="15" height="65" rx="2" fill="url(#gradient1)"/>
+  </g>
+  
+  <!-- Mobile app mockup -->
+  <g transform="translate(620, 100)">
+    <rect x="0" y="0" width="80" height="140" rx="15" fill="white" stroke="url(#gradient4)" stroke-width="2"/>
+    <rect x="5" y="10" width="70" height="20" rx="5" fill="url(#gradient4)" opacity="0.2"/>
+    <circle cx="15" cy="20" r="3" fill="url(#gradient4)"/>
+    <rect x="25" y="17" width="40" height="6" rx="2" fill="url(#gradient4)" opacity="0.3"/>
+    <rect x="10" y="40" width="60" height="8" rx="2" fill="url(#gradient1)" opacity="0.3"/>
+    <rect x="10" y="55" width="60" height="8" rx="2" fill="url(#gradient2)" opacity="0.3"/>
+    <rect x="10" y="70" width="60" height="8" rx="2" fill="url(#gradient3)" opacity="0.3"/>
+    <rect x="10" y="85" width="60" height="8" rx="2" fill="url(#gradient4)" opacity="0.3"/>
+    <rect x="10" y="100" width="60" height="8" rx="2" fill="url(#gradient1)" opacity="0.3"/>
+  </g>
+  
+  <!-- Connection lines with animation -->
+  <path d="M250 110 Q275 90 300 120" stroke="url(#gradient1)" stroke-width="3" fill="none" opacity="0.6"/>
+  <path d="M375 120 Q400 100 450 110" stroke="url(#gradient2)" stroke-width="3" fill="none" opacity="0.6"/>
+  <path d="M600 130 Q610 120 620 140" stroke="url(#gradient4)" stroke-width="3" fill="none" opacity="0.6"/>
+  
+  <!-- Success indicators -->
+  <g transform="translate(100, 200)">
+    <circle cx="15" cy="15" r="12" fill="url(#gradient2)" opacity="0.8"/>
+    <path d="M10 15 L13 18 L20 11" stroke="white" stroke-width="2" fill="none"/>
+  </g>
+  
+  <g transform="translate(350, 220)">
+    <circle cx="15" cy="15" r="12" fill="url(#gradient2)" opacity="0.8"/>
+    <path d="M10 15 L13 18 L20 11" stroke="white" stroke-width="2" fill="none"/>
+  </g>
+  
+  <g transform="translate(600, 200)">
+    <circle cx="15" cy="15" r="12" fill="url(#gradient2)" opacity="0.8"/>
+    <path d="M10 15 L13 18 L20 11" stroke="white" stroke-width="2" fill="none"/>
+  </g>
+  
+  <!-- Floating elements -->
+  <g transform="translate(150, 250)">
+    <circle cx="10" cy="10" r="8" fill="url(#gradient1)" opacity="0.6"/>
+    <circle cx="25" cy="5" r="6" fill="url(#gradient2)" opacity="0.6"/>
+    <circle cx="35" cy="15" r="4" fill="url(#gradient3)" opacity="0.6"/>
+  </g>
+  
+  <g transform="translate(500, 280)">
+    <circle cx="10" cy="10" r="8" fill="url(#gradient4)" opacity="0.6"/>
+    <circle cx="25" cy="5" r="6" fill="url(#gradient1)" opacity="0.6"/>
+    <circle cx="35" cy="15" r="4" fill="url(#gradient2)" opacity="0.6"/>
+  </g>
+</svg>

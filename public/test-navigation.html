@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navigation Test - Skint</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+</head>
+<body class="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100">
+    <div class="container mx-auto px-4 py-8">
+        <div class="max-w-2xl mx-auto text-center">
+            <h1 class="text-3xl font-bold text-gray-900 mb-8">Navigation Test Page</h1>
+            
+            <div class="bg-white rounded-lg shadow-sm border p-6 mb-6">
+                <h2 class="text-xl font-semibold mb-4">Test Navigation Methods</h2>
+                
+                <div class="space-y-4">
+                    <button 
+                        class="w-full bg-blue-500 text-white py-3 px-4 rounded-lg hover:bg-blue-600 transition-colors"
+                        onclick="testMethod1()"
+                    >
+                        Method 1: window.location.replace('/')
+                    </button>
+                    
+                    <button 
+                        class="w-full bg-green-500 text-white py-3 px-4 rounded-lg hover:bg-green-600 transition-colors"
+                        onclick="testMethod2()"
+                    >
+                        Method 2: window.location.href = '/'
+                    </button>
+                    
+                    <button 
+                        class="w-full bg-purple-500 text-white py-3 px-4 rounded-lg hover:bg-purple-600 transition-colors"
+                        onclick="testMethod3()"
+                    >
+                        Method 3: window.location.assign('/')
+                    </button>
+                    
+                    <button 
+                        class="w-full bg-orange-500 text-white py-3 px-4 rounded-lg hover:bg-orange-600 transition-colors"
+                        onclick="testMethod4()"
+                    >
+                        Method 4: document.location = '/'
+                    </button>
+                </div>
+            </div>
+            
+            <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
+                <h3 class="font-semibold text-yellow-800 mb-2">Instructions:</h3>
+                <p class="text-yellow-700 text-sm">
+                    Click each button above to test different navigation methods. 
+                    Check the browser console for any error messages.
+                    The working method should take you to the home page.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+        
+        function testMethod1() {
+            console.log('Testing Method 1: window.location.replace("/")');
+            try {
+                window.location.replace('/');
+            } catch (error) {
+                console.error('Method 1 failed:', error);
+                alert('Method 1 failed: ' + error.message);
+            }
+        }
+        
+        function testMethod2() {
+            console.log('Testing Method 2: window.location.href = "/"');
+            try {
+                window.location.href = '/';
+            } catch (error) {
+                console.error('Method 2 failed:', error);
+                alert('Method 2 failed: ' + error.message);
+            }
+        }
+        
+        function testMethod3() {
+            console.log('Testing Method 3: window.location.assign("/")');
+            try {
+                window.location.assign('/');
+            } catch (error) {
+                console.error('Method 3 failed:', error);
+                alert('Method 3 failed: ' + error.message);
+            }
+        }
+        
+        function testMethod4() {
+            console.log('Testing Method 4: document.location = "/"');
+            try {
+                document.location = '/';
+            } catch (error) {
+                console.error('Method 4 failed:', error);
+                alert('Method 4 failed: ' + error.message);
+            }
+        }
+    </script>
+</body>
+</html>

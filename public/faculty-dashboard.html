@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faculty Dashboard - All 18+ Features</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <style>
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        .tab-button.active {
+            background-color: #3b82f6;
+            color: white;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 min-h-screen">
+    <!-- Header -->
+    <header class="bg-white shadow-sm border-b">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex items-center justify-between">
+                <a href="/" class="flex items-center space-x-2 hover:opacity-80 transition-opacity" onclick="window.location.href='/'">
+                    <div class="w-8 h-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
+                        <span class="text-white font-bold text-lg">S</span>
+                    </div>
+                    <span class="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                        Skint
+                    </span>
+                </a>
+                
+                <div class="flex items-center space-x-4">
+                    <a href="/" class="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors" onclick="window.location.href='/'">
+                        Back to Home
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-8">
+        <!-- Welcome Section with 18+ Features Badge -->
+        <div class="mb-8">
+            <div class="flex items-center justify-between mb-6">
+                <div>
+                    <h1 class="text-3xl font-bold text-gray-900 mb-2">
+                        Welcome back, Dr. Faculty! 👨‍🏫
+                    </h1>
+                    <p class="text-gray-600">
+                        Monitor and guide your students' placement journey
+                    </p>
+                </div>
+                <div class="text-right">
+                    <div class="bg-gradient-to-r from-blue-500 to-purple-500 text-white px-6 py-3 rounded-lg">
+                        <div class="text-2xl font-bold">18+</div>
+                        <div class="text-sm">Advanced Features</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Stats -->
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+            <div class="bg-white rounded-lg shadow-lg p-6">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-sm font-medium text-gray-600">Total Students</p>
+                        <p class="text-2xl font-bold text-gray-900">4</p>
+                    </div>
+                    <div class="w-12 h-12 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-lg flex items-center justify-center">
+                        <i data-lucide="users" class="h-6 w-6 text-white"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white rounded-lg shadow-lg p-6">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-sm font-medium text-gray-600">Placed Students</p>
+                        <p class="text-2xl font-bold text-gray-900">2</p>
+                    </div>
+                    <div class="w-12 h-12 bg-gradient-to-r from-green-500 to-emerald-500 rounded-lg flex items-center justify-center">
+                        <i data-lucide="check-circle" class="h-6 w-6 text-white"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white rounded-lg shadow-lg p-6">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-sm font-medium text-gray-600">Active Applications</p>
+                        <p class="text-2xl font-bold text-gray-900">41</p>
+                    </div>
+                    <div class="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg flex items-center justify-center">
+                        <i data-lucide="briefcase" class="h-6 w-6 text-white"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white rounded-lg shadow-lg p-6">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-sm font-medium text-gray-600">Success Rate</p>
+                        <p class="text-2xl font-bold text-gray-900">50%</p>
+                    </div>
+                    <div class="w-12 h-12 bg-gradient-to-r from-orange-500 to-red-500 rounded-lg flex items-center justify-center">
+                        <i data-lucide="trending-up" class="h-6 w-6 text-white"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Enhanced Quick Actions with Animations -->
+        <div class="bg-white rounded-lg shadow-sm border p-6 mb-8">
+            <h3 class="text-xl font-bold mb-6 text-center">🚀 Quick Actions & Tools</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                <button class="quick-action-btn bg-gradient-to-r from-blue-500 to-blue-600 text-white p-4 rounded-lg hover:from-blue-600 hover:to-blue-700 transition-all duration-300 transform hover:scale-105 hover:shadow-lg" onclick="showQuickAction('bulk-message')">
+                    <div class="flex items-center justify-center mb-2">
+                        <i data-lucide="message-square" class="h-6 w-6"></i>
+                    </div>
+                    <div class="text-sm font-medium">Send Bulk Message</div>
+                </button>
+                
+                <button class="quick-action-btn bg-gradient-to-r from-green-500 to-green-600 text-white p-4 rounded-lg hover:from-green-600 hover:to-green-700 transition-all duration-300 transform hover:scale-105 hover:shadow-lg" onclick="showQuickAction('export-report')">
+                    <div class="flex items-center justify-center mb-2">
+                        <i data-lucide="download" class="h-6 w-6"></i>
+                    </div>
+                    <div class="text-sm font-medium">Export Report</div>
+                </button>
+                
+                <button class="quick-action-btn bg-gradient-to-r from-purple-500 to-purple-600 text-white p-4 rounded-lg hover:from-purple-600 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 hover:shadow-lg" onclick="showQuickAction('schedule-meeting')">
+                    <div class="flex items-center justify-center mb-2">
+                        <i data-lucide="calendar" class="h-6 w-6"></i>
+                    </div>
+                    <div class="text-sm font-medium">Schedule Meeting</div>
+                </button>
+                
+                <button class="quick-action-btn bg-gradient-to-r from-orange-500 to-orange-600 text-white p-4 rounded-lg hover:from-orange-600 hover:to-orange-700 transition-all duration-300 transform hover:scale-105 hover:shadow-lg" onclick="showQuickAction('ai-insights')">
+                    <div class="flex items-center justify-center mb-2">
+                        <i data-lucide="brain" class="h-6 w-6"></i>
+                    </div>
+                    <div class="text-sm font-medium">AI Insights</div>
+                </button>
+            </div>
+        </div>
+
+        <!-- Main Content Tabs -->
+        <div class="bg-white rounded-lg shadow-sm border p-4 mb-6">
+            <h3 class="text-lg font-semibold mb-4">🚀 Explore All Features:</h3>
+            <div class="flex flex-wrap gap-2 mb-4">
+                <button class="tab-button active px-4 py-2 rounded-lg border" onclick="showTab('overview')">
+                    📊 Overview
+                </button>
+                <button class="tab-button px-4 py-2 rounded-lg border" onclick="showTab('students')">
+                    👥 Students
+                </button>
+                <button class="tab-button px-4 py-2 rounded-lg border" onclick="showTab('applications')">
+                    📋 Applications
+                </button>
+                <button class="tab-button px-4 py-2 rounded-lg border" onclick="showTab('interviews')">
+                    📅 Interviews
+                </button>
+                <button class="tab-button px-4 py-2 rounded-lg border" onclick="showTab('analytics')">
+                    📊 Analytics
+                </button>
+                <button class="tab-button px-4 py-2 rounded-lg border" onclick="showTab('ai-insights')">
+                    🤖 AI Insights
+                </button>
+            </div>
+        </div>
+
+        <!-- Tab Contents -->
+        <div id="overview" class="tab-content active">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <!-- Student List -->
+                <div class="bg-white rounded-lg shadow-sm border">
+                    <div class="p-6 border-b">
+                        <h3 class="text-lg font-semibold flex items-center">
+                            <i data-lucide="users" class="h-5 w-5 mr-2"></i>
+                            Recent Student Activity
+                        </h3>
+                    </div>
+                    <div class="p-6">
+                        <div class="space-y-4">
+                            <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center">
+                                        <span class="text-white font-medium">S</span>
+                                    </div>
+                                    <div>
+                                        <p class="font-medium">Sarah Johnson</p>
+                                        <p class="text-sm text-gray-600">Computer Science</p>
+                                    </div>
+                                </div>
+                                <div class="text-right">
+                                    <span class="bg-green-100 text-green-800 px-2 py-1 rounded-full text-xs">Active</span>
+                                    <p class="text-xs text-gray-500 mt-1">2 days ago</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center">
+                                        <span class="text-white font-medium">M</span>
+                                    </div>
+                                    <div>
+                                        <p class="font-medium">Michael Chen</p>
+                                        <p class="text-sm text-gray-600">Computer Science</p>
+                                    </div>
+                                </div>
+                                <div class="text-right">
+                                    <span class="bg-red-100 text-red-800 px-2 py-1 rounded-full text-xs">Needs Attention</span>
+                                    <p class="text-xs text-gray-500 mt-1">1 week ago</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="bg-white rounded-lg shadow-sm border">
+                    <div class="p-6 border-b">
+                        <h3 class="text-lg font-semibold flex items-center">
+                            <i data-lucide="zap" class="h-5 w-5 mr-2"></i>
+                            Quick Actions
+                        </h3>
+                    </div>
+                    <div class="p-6 space-y-4">
+                        <button class="w-full text-left p-3 border rounded-lg hover:bg-gray-50 transition-colors">
+                            <i data-lucide="message-square" class="h-4 w-4 mr-2 inline"></i>
+                            Send Bulk Message
+                        </button>
+                        <button class="w-full text-left p-3 border rounded-lg hover:bg-gray-50 transition-colors">
+                            <i data-lucide="download" class="h-4 w-4 mr-2 inline"></i>
+                            Export Student Report
+                        </button>
+                        <button class="w-full text-left p-3 border rounded-lg hover:bg-gray-50 transition-colors">
+                            <i data-lucide="calendar" class="h-4 w-4 mr-2 inline"></i>
+                            Schedule Group Meeting
+                        </button>
+                        <button class="w-full text-left p-3 border rounded-lg hover:bg-gray-50 transition-colors">
+                            <i data-lucide="bar-chart-3" class="h-4 w-4 mr-2 inline"></i>
+                            View Performance Analytics
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="students" class="tab-content">
+            <div class="bg-white rounded-lg shadow-sm border p-6">
+                <h3 class="text-lg font-semibold mb-4">👥 Student Management</h3>
+                
+                <!-- Enhanced Search and Filter -->
+                <div class="mb-6 p-4 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg border border-blue-200">
+                    <div class="flex flex-col md:flex-row gap-4">
+                        <div class="flex-1">
+                            <input type="text" id="studentSearch" placeholder="Search students by name, department, or skills..." 
+                                   class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200"
+                                   onkeyup="filterStudents()">
+                        </div>
+                        <select class="p-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200" onchange="filterByStatus(this.value)">
+                            <option value="">All Status</option>
+                            <option value="active">Active</option>
+                            <option value="placed">Placed</option>
+                            <option value="needs-attention">Needs Attention</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Animated Student Cards -->
+                <div id="studentList" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="student-card bg-white border rounded-lg p-4 hover:shadow-lg transition-all duration-300 transform hover:scale-105" data-status="active">
+                        <div class="flex items-center space-x-3 mb-3">
+                            <div class="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center">
+                                <span class="text-white font-bold">SJ</span>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold">Sarah Johnson</h4>
+                                <p class="text-sm text-gray-600">Computer Science</p>
+                            </div>
+                            <div class="ml-auto">
+                                <span class="bg-green-100 text-green-800 px-2 py-1 rounded-full text-xs">Active</span>
+                            </div>
+                        </div>
+                        <div class="space-y-2">
+                            <div class="flex justify-between text-sm">
+                                <span>Applications:</span>
+                                <span class="font-semibold">12</span>
+                            </div>
+                            <div class="flex justify-between text-sm">
+                                <span>Interviews:</span>
+                                <span class="font-semibold">5</span>
+                            </div>
+                            <div class="flex justify-between text-sm">
+                                <span>Offers:</span>
+                                <span class="font-semibold text-green-600">2</span>
+                            </div>
+                            <div class="mt-3">
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="bg-gradient-to-r from-green-400 to-green-600 h-2 rounded-full transition-all duration-1000" style="width: 75%"></div>
+                                </div>
+                                <p class="text-xs text-gray-500 mt-1">Progress: 75%</p>
+                            </div>
+                        </div>
+                        <div class="mt-4 flex space-x-2">
+                            <button class="flex-1 bg-blue-500 text-white py-2 px-3 rounded text-sm hover:bg-blue-600 transition-colors" onclick="viewStudentProfile('sarah')">
+                                View Profile
+                            </button>
+                            <button class="bg-gray-100 text-gray-700 py-2 px-3 rounded text-sm hover:bg-gray-200 transition-colors" onclick="sendMessage('sarah')">
+                                <i data-lucide="message-circle" class="h-4 w-4"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="student-card bg-white border rounded-lg p-4 hover:shadow-lg transition-all duration-300 transform hover:scale-105" data-status="needs-attention">
+                        <div class="flex items-center space-x-3 mb-3">
+                            <div class="w-12 h-12 bg-gradient-to-r from-orange-500 to-red-500 rounded-full flex items-center justify-center">
+                                <span class="text-white font-bold">MC</span>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold">Michael Chen</h4>
+                                <p class="text-sm text-gray-600">Computer Science</p>
+                            </div>
+                            <div class="ml-auto">
+                                <span class="bg-red-100 text-red-800 px-2 py-1 rounded-full text-xs">Needs Attention</span>
+                            </div>
+                        </div>
+                        <div class="space-y-2">
+                            <div class="flex justify-between text-sm">
+                                <span>Applications:</span>
+                                <span class="font-semibold">3</span>
+                            </div>
+                            <div class="flex justify-between text-sm">
+                                <span>Interviews:</span>
+                                <span class="font-semibold">1</span>
+                            </div>
+                            <div class="flex justify-between text-sm">
+                                <span>Offers:</span>
+                                <span class="font-semibold text-gray-500">0</span>
+                            </div>
+                            <div class="mt-3">
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="bg-gradient-to-r from-orange-400 to-red-500 h-2 rounded-full transition-all duration-1000" style="width: 25%"></div>
+                                </div>
+                                <p class="text-xs text-gray-500 mt-1">Progress: 25%</p>
+                            </div>
+                        </div>
+                        <div class="mt-4 flex space-x-2">
+                            <button class="flex-1 bg-blue-500 text-white py-2 px-3 rounded text-sm hover:bg-blue-600 transition-colors" onclick="viewStudentProfile('michael')">
+                                View Profile
+                            </button>
+                            <button class="bg-gray-100 text-gray-700 py-2 px-3 rounded text-sm hover:bg-gray-200 transition-colors" onclick="sendMessage('michael')">
+                                <i data-lucide="message-circle" class="h-4 w-4"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="student-card bg-white border rounded-lg p-4 hover:shadow-lg transition-all duration-300 transform hover:scale-105" data-status="placed">
+                        <div class="flex items-center space-x-3 mb-3">
+                            <div class="w-12 h-12 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full flex items-center justify-center">
+                                <span class="text-white font-bold">ER</span>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold">Emily Rodriguez</h4>
+                                <p class="text-sm text-gray-600">Computer Science</p>
+                            </div>
+                            <div class="ml-auto">
+                                <span class="bg-green-100 text-green-800 px-2 py-1 rounded-full text-xs">Placed</span>
+                            </div>
+                        </div>
+                        <div class="space-y-2">
+                            <div class="flex justify-between text-sm">
+                                <span>Applications:</span>
+                                <span class="font-semibold">8</span>
+                            </div>
+                            <div class="flex justify-between text-sm">
+                                <span>Interviews:</span>
+                                <span class="font-semibold">4</span>
+                            </div>
+                            <div class="flex justify-between text-sm">
+                                <span>Offers:</span>
+                                <span class="font-semibold text-green-600">1</span>
+                            </div>
+                            <div class="mt-3">
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="bg-gradient-to-r from-green-400 to-green-600 h-2 rounded-full transition-all duration-1000" style="width: 100%"></div>
+                                </div>
+                                <p class="text-xs text-gray-500 mt-1">Progress: 100%</p>
+                            </div>
+                        </div>
+                        <div class="mt-4 flex space-x-2">
+                            <button class="flex-1 bg-blue-500 text-white py-2 px-3 rounded text-sm hover:bg-blue-600 transition-colors" onclick="viewStudentProfile('emily')">
+                                View Profile
+                            </button>
+                            <button class="bg-gray-100 text-gray-700 py-2 px-3 rounded text-sm hover:bg-gray-200 transition-colors" onclick="sendMessage('emily')">
+                                <i data-lucide="message-circle" class="h-4 w-4"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="analytics" class="tab-content">
+            <div class="bg-white rounded-lg shadow-sm border p-6">
+                <h3 class="text-lg font-semibold mb-4">📊 Analytics & Reports</h3>
+                
+                <!-- Interactive Charts Section -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+                    <!-- Placement Status Chart -->
+                    <div class="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-lg p-6 border border-blue-200">
+                        <h4 class="font-semibold mb-4 flex items-center">
+                            <i data-lucide="pie-chart" class="h-5 w-5 mr-2 text-blue-600"></i>
+                            Placement Status Overview
+                        </h4>
+                        <div class="relative">
+                            <div class="w-32 h-32 mx-auto mb-4 relative">
+                                <svg class="w-32 h-32 transform -rotate-90" viewBox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="40" stroke="#e5e7eb" stroke-width="8" fill="none"></circle>
+                                    <circle cx="50" cy="50" r="40" stroke="#10b981" stroke-width="8" fill="none" 
+                                            stroke-dasharray="251.2" stroke-dashoffset="125.6" 
+                                            class="animate-pulse transition-all duration-1000"></circle>
+                                </svg>
+                                <div class="absolute inset-0 flex items-center justify-center">
+                                    <div class="text-center">
+                                        <div class="text-2xl font-bold text-green-600">50%</div>
+                                        <div class="text-xs text-gray-600">Placed</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex justify-center space-x-4 text-sm">
+                                <div class="flex items-center">
+                                    <div class="w-3 h-3 bg-green-500 rounded-full mr-2"></div>
+                                    <span>Placed: 2</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <div class="w-3 h-3 bg-gray-400 rounded-full mr-2"></div>
+                                    <span>Unplaced: 2</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Application Trends -->
+                    <div class="bg-gradient-to-br from-purple-50 to-pink-50 rounded-lg p-6 border border-purple-200">
+                        <h4 class="font-semibold mb-4 flex items-center">
+                            <i data-lucide="trending-up" class="h-5 w-5 mr-2 text-purple-600"></i>
+                            Application Trends
+                        </h4>
+                        <div class="space-y-3">
+                            <div class="flex items-center justify-between">
+                                <span class="text-sm">This Month</span>
+                                <div class="flex items-center">
+                                    <div class="w-20 bg-gray-200 rounded-full h-2 mr-2">
+                                        <div class="bg-gradient-to-r from-purple-400 to-purple-600 h-2 rounded-full transition-all duration-1000" style="width: 80%"></div>
+                                    </div>
+                                    <span class="text-sm font-semibold">16</span>
+                                </div>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span class="text-sm">Last Month</span>
+                                <div class="flex items-center">
+                                    <div class="w-20 bg-gray-200 rounded-full h-2 mr-2">
+                                        <div class="bg-gradient-to-r from-blue-400 to-blue-600 h-2 rounded-full transition-all duration-1000" style="width: 60%"></div>
+                                    </div>
+                                    <span class="text-sm font-semibold">12</span>
+                                </div>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span class="text-sm">This Week</span>
+                                <div class="flex items-center">
+                                    <div class="w-20 bg-gray-200 rounded-full h-2 mr-2">
+                                        <div class="bg-gradient-to-r from-green-400 to-green-600 h-2 rounded-full transition-all duration-1000" style="width: 40%"></div>
+                                    </div>
+                                    <span class="text-sm font-semibold">4</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Export and Actions -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="bg-white border rounded-lg p-4 hover:shadow-lg transition-all duration-300">
+                        <h4 class="font-semibold mb-2 flex items-center">
+                            <i data-lucide="download" class="h-5 w-5 mr-2 text-green-600"></i>
+                            Export Reports
+                        </h4>
+                        <p class="text-sm text-gray-600 mb-3">Generate comprehensive reports</p>
+                        <div class="space-y-2">
+                            <button class="w-full bg-green-500 text-white py-2 px-3 rounded text-sm hover:bg-green-600 transition-colors" onclick="exportReport('pdf')">
+                                Export PDF Report
+                            </button>
+                            <button class="w-full bg-blue-500 text-white py-2 px-3 rounded text-sm hover:bg-blue-600 transition-colors" onclick="exportReport('excel')">
+                                Export Excel Report
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="bg-white border rounded-lg p-4 hover:shadow-lg transition-all duration-300">
+                        <h4 class="font-semibold mb-2 flex items-center">
+                            <i data-lucide="activity" class="h-5 w-5 mr-2 text-blue-600"></i>
+                            Live Tracking
+                        </h4>
+                        <p class="text-sm text-gray-600 mb-3">Real-time monitoring</p>
+                        <div class="space-y-2">
+                            <div class="flex items-center justify-between">
+                                <span class="text-sm">Active Students:</span>
+                                <div class="flex items-center">
+                                    <div class="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"></div>
+                                    <span class="font-semibold">3</span>
+                                </div>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span class="text-sm">Applications Today:</span>
+                                <span class="font-semibold text-blue-600">5</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span class="text-sm">Interviews Scheduled:</span>
+                                <span class="font-semibold text-purple-600">2</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white border rounded-lg p-4 hover:shadow-lg transition-all duration-300">
+                        <h4 class="font-semibold mb-2 flex items-center">
+                            <i data-lucide="target" class="h-5 w-5 mr-2 text-orange-600"></i>
+                            Performance Metrics
+                        </h4>
+                        <p class="text-sm text-gray-600 mb-3">Success rate analysis</p>
+                        <div class="space-y-3">
+                            <div class="text-center">
+                                <div class="text-3xl font-bold text-green-600 mb-1">50%</div>
+                                <div class="text-sm text-gray-600">Overall Success Rate</div>
+                            </div>
+                            <div class="grid grid-cols-2 gap-2 text-sm">
+                                <div class="text-center p-2 bg-green-50 rounded">
+                                    <div class="font-semibold text-green-600">2</div>
+                                    <div class="text-xs">Placed</div>
+                                </div>
+                                <div class="text-center p-2 bg-gray-50 rounded">
+                                    <div class="font-semibold text-gray-600">2</div>
+                                    <div class="text-xs">Unplaced</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="ai-insights" class="tab-content">
+            <div class="bg-white rounded-lg shadow-sm border p-6">
+                <h3 class="text-lg font-semibold mb-4">🤖 AI Insights - All 4 Features</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="p-4 border rounded-lg">
+                        <h4 class="font-semibold mb-2">AI Mentor Assistant</h4>
+                        <p class="text-sm text-gray-600">Smart alerts for students needing attention</p>
+                        <div class="mt-2">
+                            <div class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded text-xs">⚠️ 2 students need attention</div>
+                        </div>
+                    </div>
+                    <div class="p-4 border rounded-lg">
+                        <h4 class="font-semibold mb-2">Student Ranking</h4>
+                        <p class="text-sm text-gray-600">AI-powered performance ranking system</p>
+                        <div class="mt-2">
+                            <ol class="text-sm">
+                                <li>1. Sarah Johnson</li>
+                                <li>2. Michael Chen</li>
+                            </ol>
+                        </div>
+                    </div>
+                    <div class="p-4 border rounded-lg">
+                        <h4 class="font-semibold mb-2">Batch Insights</h4>
+                        <p class="text-sm text-gray-600">Compare group performance with others</p>
+                        <div class="mt-2">
+                            <div class="text-sm text-gray-600">Your batch: 50% placement rate</div>
+                        </div>
+                    </div>
+                    <div class="p-4 border rounded-lg">
+                        <h4 class="font-semibold mb-2">Smart Recommendations</h4>
+                        <p class="text-sm text-gray-600">AI suggestions for student guidance</p>
+                        <div class="mt-2">
+                            <div class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs">💡 Recommend Python course</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="interviews" class="tab-content">
+            <div class="bg-white rounded-lg shadow-sm border p-6">
+                <h3 class="text-lg font-semibold mb-4">📅 Interview Management - All 4 Features</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="p-4 border rounded-lg">
+                        <h4 class="font-semibold mb-2">Interview Scheduling</h4>
+                        <p class="text-sm text-gray-600">Schedule and manage student interviews</p>
+                        <div class="mt-2">
+                            <button class="bg-blue-500 text-white px-3 py-1 rounded text-sm">Schedule Interview</button>
+                        </div>
+                    </div>
+                    <div class="p-4 border rounded-lg">
+                        <h4 class="font-semibold mb-2">Results Tracking</h4>
+                        <p class="text-sm text-gray-600">Monitor interview outcomes and feedback</p>
+                        <div class="mt-2">
+                            <div class="text-sm">✅ 2 Passed | ❌ 1 Failed</div>
+                        </div>
+                    </div>
+                    <div class="p-4 border rounded-lg">
+                        <h4 class="font-semibold mb-2">Feedback Management</h4>
+                        <p class="text-sm text-gray-600">Collect and analyze interview feedback</p>
+                        <div class="mt-2">
+                            <textarea placeholder="Add feedback..." class="w-full p-2 border rounded text-sm"></textarea>
+                        </div>
+                    </div>
+                    <div class="p-4 border rounded-lg">
+                        <h4 class="font-semibold mb-2">Performance Analysis</h4>
+                        <p class="text-sm text-gray-600">Analyze interview performance trends</p>
+                        <div class="mt-2">
+                            <div class="text-2xl font-bold text-green-600">67%</div>
+                            <div class="text-sm text-gray-600">Interview Success Rate</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="applications" class="tab-content">
+            <div class="bg-white rounded-lg shadow-sm border p-6">
+                <h3 class="text-lg font-semibold mb-4">📋 Application Tracking - All 4 Features</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="p-4 border rounded-lg">
+                        <h4 class="font-semibold mb-2">Application Status</h4>
+                        <p class="text-sm text-gray-600">Track all student applications</p>
+                        <div class="mt-2">
+                            <div class="text-sm">📊 41 Total Applications</div>
+                        </div>
+                    </div>
+                    <div class="p-4 border rounded-lg">
+                        <h4 class="font-semibold mb-2">Company Tracking</h4>
+                        <p class="text-sm text-gray-600">Monitor applications by company</p>
+                        <div class="mt-2">
+                            <div class="text-sm">🏢 Google: 5 | Microsoft: 3 | Amazon: 2</div>
+                        </div>
+                    </div>
+                    <div class="p-4 border rounded-lg">
+                        <h4 class="font-semibold mb-2">Progress Monitoring</h4>
+                        <p class="text-sm text-gray-600">Track application progress over time</p>
+                        <div class="mt-2">
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-blue-600 h-2 rounded-full" style="width: 75%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-4 border rounded-lg">
+                        <h4 class="font-semibold mb-2">Success Analytics</h4>
+                        <p class="text-sm text-gray-600">Analyze application success rates</p>
+                        <div class="mt-2">
+                            <div class="text-2xl font-bold text-green-600">50%</div>
+                            <div class="text-sm text-gray-600">Application Success Rate</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+        
+        // Tab functionality
+        function showTab(tabName) {
+            console.log('Switching to tab:', tabName);
+            
+            // Hide all tab contents
+            const tabContents = document.querySelectorAll('.tab-content');
+            tabContents.forEach(content => {
+                content.classList.remove('active');
+                content.style.display = 'none';
+            });
+            
+            // Remove active class from all tab buttons
+            const tabButtons = document.querySelectorAll('.tab-button');
+            tabButtons.forEach(button => {
+                button.classList.remove('active');
+                button.classList.remove('bg-blue-500', 'text-white');
+                button.classList.add('text-gray-700');
+            });
+            
+            // Show selected tab content
+            const targetTab = document.getElementById(tabName);
+            if (targetTab) {
+                targetTab.classList.add('active');
+                targetTab.style.display = 'block';
+                console.log('Tab shown:', tabName);
+            } else {
+                console.error('Tab not found:', tabName);
+            }
+            
+            // Add active class to clicked button
+            const clickedButton = event.target;
+            if (clickedButton) {
+                clickedButton.classList.add('active', 'bg-blue-500', 'text-white');
+                clickedButton.classList.remove('text-gray-700');
+            }
+        }
+
+        // Quick Actions functionality
+        function showQuickAction(action) {
+            switch(action) {
+                case 'bulk-message':
+                    showBulkMessageModal();
+                    break;
+                case 'export-report':
+                    exportReport('pdf');
+                    break;
+                case 'schedule-meeting':
+                    showScheduleModal();
+                    break;
+                case 'ai-insights':
+                    showTab('ai-insights');
+                    break;
+            }
+        }
+
+        // Student filtering functionality
+        function filterStudents() {
+            const searchTerm = document.getElementById('studentSearch').value.toLowerCase();
+            const studentCards = document.querySelectorAll('.student-card');
+            
+            studentCards.forEach(card => {
+                const studentName = card.querySelector('h4').textContent.toLowerCase();
+                const department = card.querySelector('p').textContent.toLowerCase();
+                
+                if (studentName.includes(searchTerm) || department.includes(searchTerm)) {
+                    card.style.display = 'block';
+                    card.style.animation = 'fadeIn 0.3s ease-in';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        function filterByStatus(status) {
+            const studentCards = document.querySelectorAll('.student-card');
+            
+            studentCards.forEach(card => {
+                const cardStatus = card.getAttribute('data-status');
+                
+                if (status === '' || cardStatus === status) {
+                    card.style.display = 'block';
+                    card.style.animation = 'fadeIn 0.3s ease-in';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Student profile and messaging
+        function viewStudentProfile(studentId) {
+            alert(`Opening detailed profile for ${studentId}. This would show comprehensive student information, progress tracking, skills, and placement history.`);
+        }
+
+        function sendMessage(studentId) {
+            alert(`Opening messaging interface for ${studentId}. This would allow you to send personalized guidance and feedback.`);
+        }
+
+        // Export functionality
+        function exportReport(format) {
+            const button = event.target;
+            const originalText = button.textContent;
+            
+            // Show loading state
+            button.textContent = 'Generating...';
+            button.disabled = true;
+            
+            // Simulate export process
+            setTimeout(() => {
+                button.textContent = 'Downloaded!';
+                button.classList.remove('bg-green-500', 'bg-blue-500');
+                button.classList.add('bg-gray-500');
+                
+                setTimeout(() => {
+                    button.textContent = originalText;
+                    button.disabled = false;
+                    button.classList.remove('bg-gray-500');
+                    if (format === 'pdf') {
+                        button.classList.add('bg-green-500');
+                    } else {
+                        button.classList.add('bg-blue-500');
+                    }
+                }, 2000);
+            }, 1500);
+        }
+
+        // Modal functions
+        function showBulkMessageModal() {
+            alert('Opening bulk messaging interface. This would allow you to send messages to multiple students at once with personalized content.');
+        }
+
+        function showScheduleModal() {
+            alert('Opening meeting scheduler. This would allow you to schedule group meetings, one-on-one sessions, or placement preparation workshops.');
+        }
+
+        // Animation on scroll
+        function animateOnScroll() {
+            const elements = document.querySelectorAll('.feature-card, .student-card');
+            elements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.classList.add('animate-fade-in');
+                }
+            });
+        }
+
+        // Initialize everything
+        document.addEventListener('DOMContentLoaded', () => {
+            showTab('overview');
+            
+            // Add scroll animation listener
+            window.addEventListener('scroll', animateOnScroll);
+            
+            // Initialize animations
+            animateOnScroll();
+        });
+
+        // Add CSS animations
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fadeIn {
+                from { opacity: 0; transform: translateY(20px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+            .animate-fade-in {
+                animation: fadeIn 0.6s ease-out;
+            }
+            .quick-action-btn {
+                transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            }
+            .quick-action-btn:hover {
+                transform: translateY(-2px) scale(1.02);
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>

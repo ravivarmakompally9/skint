@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choose Your Role - Skint</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <style>
+        .role-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        .role-card.selected {
+            ring: 2px;
+            ring-color: #3b82f6;
+            background-color: #eff6ff;
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100">
+    <!-- Header -->
+    <header class="container mx-auto px-4 py-6">
+        <nav class="flex items-center justify-between">
+            <button 
+                class="flex items-center space-x-2 hover:opacity-80 transition-opacity"
+                onclick="navigateToHome()"
+            >
+                <div class="w-8 h-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
+                    <span class="text-white font-bold text-lg">S</span>
+                </div>
+                <span class="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                    Skint
+                </span>
+            </button>
+            
+            <button 
+                class="flex items-center space-x-2 px-4 py-2 text-gray-700 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-colors"
+                onclick="navigateToHome()"
+            >
+                <i data-lucide="arrow-left" class="h-4 w-4"></i>
+                <span>Back to Home</span>
+            </button>
+        </nav>
+    </header>
+
+    <div class="container mx-auto px-4 py-8">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-12">
+                <h1 class="text-4xl font-bold text-gray-900 mb-4">
+                    Choose Your Role
+                </h1>
+                <p class="text-xl text-gray-600">
+                    Select your stakeholder type to access your personalized dashboard
+                </p>
+            </div>
+
+            <!-- Name Input -->
+            <div class="max-w-md mx-auto mb-8 bg-white rounded-lg shadow-sm border p-6">
+                <h2 class="text-lg font-semibold mb-4">Enter Your Details</h2>
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Full Name</label>
+                        <input 
+                            type="text" 
+                            id="userName"
+                            placeholder="Enter your name" 
+                            class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200"
+                        >
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
+                        <input 
+                            type="email" 
+                            id="userEmail"
+                            placeholder="Enter your email" 
+                            class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200"
+                        >
+                    </div>
+                </div>
+            </div>
+
+            <!-- Role Selection -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Student Card -->
+                <div class="role-card bg-white rounded-lg shadow-sm border p-6 cursor-pointer transition-all duration-300 hover:bg-gray-50" onclick="selectRole('student')">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-12 h-12 rounded-full bg-blue-500 flex items-center justify-center">
+                            <span class="text-white font-bold text-lg">S</span>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="text-xl font-semibold text-gray-900">Student</h3>
+                            <p class="text-gray-600 mt-1">Find opportunities and track applications</p>
+                        </div>
+                    </div>
+                    <div id="student-actions" class="mt-4 hidden">
+                        <button 
+                            class="w-full bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 transition-colors"
+                            onclick="login('student')"
+                        >
+                            Continue as Student
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Faculty Card -->
+                <div class="role-card bg-white rounded-lg shadow-sm border p-6 cursor-pointer transition-all duration-300 hover:bg-gray-50" onclick="selectRole('faculty')">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-12 h-12 rounded-full bg-green-500 flex items-center justify-center">
+                            <span class="text-white font-bold text-lg">F</span>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="text-xl font-semibold text-gray-900">Faculty</h3>
+                            <p class="text-gray-600 mt-1">Guide and mentor students</p>
+                        </div>
+                    </div>
+                    <div id="faculty-actions" class="mt-4 hidden">
+                        <button 
+                            class="w-full bg-green-500 text-white py-2 px-4 rounded-lg hover:bg-green-600 transition-colors"
+                            onclick="login('faculty')"
+                        >
+                            Continue as Faculty
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Placement Cell Card -->
+                <div class="role-card bg-white rounded-lg shadow-sm border p-6 cursor-pointer transition-all duration-300 hover:bg-gray-50" onclick="selectRole('placement')">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-12 h-12 rounded-full bg-purple-500 flex items-center justify-center">
+                            <span class="text-white font-bold text-lg">P</span>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="text-xl font-semibold text-gray-900">Placement Cell</h3>
+                            <p class="text-gray-600 mt-1">Coordinate with companies and students</p>
+                        </div>
+                    </div>
+                    <div id="placement-actions" class="mt-4 hidden">
+                        <button 
+                            class="w-full bg-purple-500 text-white py-2 px-4 rounded-lg hover:bg-purple-600 transition-colors"
+                            onclick="login('placement')"
+                        >
+                            Continue as Placement Cell
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Recruiter Card -->
+                <div class="role-card bg-white rounded-lg shadow-sm border p-6 cursor-pointer transition-all duration-300 hover:bg-gray-50" onclick="selectRole('recruiter')">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-12 h-12 rounded-full bg-orange-500 flex items-center justify-center">
+                            <span class="text-white font-bold text-lg">R</span>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="text-xl font-semibold text-gray-900">Recruiter</h3>
+                            <p class="text-gray-600 mt-1">Post jobs and manage hiring</p>
+                        </div>
+                    </div>
+                    <div id="recruiter-actions" class="mt-4 hidden">
+                        <button 
+                            class="w-full bg-orange-500 text-white py-2 px-4 rounded-lg hover:bg-orange-600 transition-colors"
+                            onclick="login('recruiter')"
+                        >
+                            Continue as Recruiter
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Access -->
+            <div class="mt-12 text-center space-y-4">
+                <div class="flex justify-center space-x-4">
+                    <button 
+                        class="flex items-center space-x-2 px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"
+                        onclick="navigateToHome()"
+                    >
+                        <i data-lucide="home" class="h-4 w-4"></i>
+                        <span>Back to Home</span>
+                    </button>
+                    <button 
+                        class="px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors"
+                        onclick="window.location.href='/dashboard-hub'"
+                    >
+                        Direct Dashboard Access
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+        
+        let selectedRole = '';
+        
+        // Navigation function
+        function navigateToHome() {
+            console.log('Navigating to home page...');
+            try {
+                // Try multiple navigation methods
+                window.location.replace('/');
+            } catch (error) {
+                console.log('First method failed, trying alternative...');
+                window.location.href = '/';
+            }
+        }
+        
+        function selectRole(role) {
+            // Remove previous selection
+            document.querySelectorAll('.role-card').forEach(card => {
+                card.classList.remove('selected');
+            });
+            document.querySelectorAll('[id$="-actions"]').forEach(action => {
+                action.classList.add('hidden');
+            });
+            
+            // Add selection to clicked card
+            const card = event.currentTarget;
+            card.classList.add('selected');
+            document.getElementById(role + '-actions').classList.remove('hidden');
+            
+            selectedRole = role;
+        }
+        
+        function login(role) {
+            const name = document.getElementById('userName').value.trim();
+            const email = document.getElementById('userEmail').value.trim();
+            
+            if (!name) {
+                alert('Please enter your name first');
+                return;
+            }
+            if (!email) {
+                alert('Please enter your email first');
+                return;
+            }
+            
+            // Store user data
+            const userData = {
+                id: Date.now().toString(),
+                name: name,
+                email: email,
+                role: role
+            };
+            
+            localStorage.setItem('user', JSON.stringify(userData));
+            console.log('User stored:', userData);
+            
+            // Show success message
+            alert(`Welcome ${name}! Redirecting to your ${role} dashboard...`);
+            
+            // Navigate to working static dashboards
+            const dashboardUrls = {
+                student: '/student-dashboard.html',
+                faculty: '/faculty-dashboard.html',
+                placement: '/placement-dashboard.html',
+                recruiter: '/recruiter-dashboard.html'
+            };
+            
+            const dashboardUrl = dashboardUrls[role];
+            console.log('Navigating to working dashboard:', dashboardUrl);
+            window.location.href = dashboardUrl;
+        }
+    </script>
+</body>
+</html>
