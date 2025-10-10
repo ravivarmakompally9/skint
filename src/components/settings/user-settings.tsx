@@ -147,7 +147,7 @@ export default function UserSettings() {
         transition={{ duration: 0.6, delay: 0.1 }}
       >
         <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-          <TabsList className="grid w-full grid-cols-5">
+          <TabsList className="w-full overflow-x-auto scrollbar-hide">
             <TabsTrigger value="profile">Profile</TabsTrigger>
             <TabsTrigger value="notifications">Notifications</TabsTrigger>
             <TabsTrigger value="privacy">Privacy</TabsTrigger>

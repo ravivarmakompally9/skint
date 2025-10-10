@@ -124,7 +124,7 @@ export default function GetStartedPage() {
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.2 }}
             >
-              Skint
+              Prashiskshan
             </motion.span>
           </Link>
 
@@ -192,7 +192,7 @@ export default function GetStartedPage() {
               className="inline-block"
               whileHover={{ scale: 1.05 }}
             >
-              with Skint
+              with Prashiskshan
             </motion.span>
           </motion.h1>
           
@@ -277,7 +277,7 @@ export default function GetStartedPage() {
             >
               <Badge variant="secondary" className="mb-4 text-sm px-4 py-2 bg-gradient-to-r from-purple-100 to-pink-100 text-purple-800 border-0">
                 <Star className="w-4 h-4 mr-2" />
-                Why Choose Skint?
+                Why Choose Prashiskshan?
               </Badge>
             </motion.div>
             <h2 className="text-4xl font-bold mb-4">Powerful Benefits</h2>
@@ -370,7 +370,7 @@ export default function GetStartedPage() {
       <footer className="bg-gray-900 text-white py-12 relative">
         <div className="container mx-auto px-4">
           <div className="text-center text-gray-400 border-t border-gray-800 pt-8">
-            <p>&copy; 2024 Skint. All rights reserved.</p>
+            <p>&copy; 2024 Prashiskshan. All rights reserved.</p>
           </div>
         </div>
       </footer>

@@ -209,7 +209,7 @@ export default function HowItWorksPage() {
                 <span className="text-white font-bold text-lg">S</span>
               </div>
               <span className="text-2xl font-bold bg-gradient-to-r from-navy-600 to-blue-600 bg-clip-text text-transparent">
-                Skint
+                Prashiskshan
               </span>
             </Link>
           </motion.div>
@@ -320,7 +320,7 @@ export default function HowItWorksPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
           >
-            Get started with Skint in just a few simple steps. Our intuitive platform makes placement management effortless for everyone.
+            Get started with Prashiskshan in just a few simple steps. Our intuitive platform makes placement management effortless for everyone.
           </motion.p>
         </motion.div>
 
@@ -404,7 +404,7 @@ export default function HowItWorksPage() {
         >
           <h2 className="text-4xl font-bold mb-4 text-navy-900">Platform Features</h2>
           <p className="text-xl text-navy-600 max-w-3xl mx-auto">
-            Discover the powerful features that make Skint the leading placement management platform
+            Discover the powerful features that make Prashiskshan the leading placement management platform
           </p>
         </motion.div>
 
@@ -440,7 +440,7 @@ export default function HowItWorksPage() {
         >
           <h2 className="text-4xl font-bold mb-4 text-navy-900">Benefits for Everyone</h2>
           <p className="text-xl text-navy-600 max-w-3xl mx-auto">
-            See how Skint benefits each stakeholder in the placement ecosystem
+            See how Prashiskshan benefits each stakeholder in the placement ecosystem
           </p>
         </motion.div>
 
@@ -489,7 +489,7 @@ export default function HowItWorksPage() {
         >
           <h2 className="text-4xl font-bold mb-4">Ready to Get Started?</h2>
           <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
-            Join thousands of users who are already transforming their placement process with Skint.
+            Join thousands of users who are already transforming their placement process with Prashiskshan.
           </p>
           <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
             <Link href="/get-started">
@@ -527,7 +527,7 @@ export default function HowItWorksPage() {
                 <div className="w-8 h-8 bg-gradient-to-r from-navy-600 to-blue-600 rounded-lg flex items-center justify-center">
                   <span className="text-white font-bold text-lg">S</span>
                 </div>
-                <span className="text-2xl font-bold">Skint</span>
+                <span className="text-2xl font-bold">Prashiskshan</span>
               </div>
               <p className="text-navy-300 mb-4">
                 Revolutionizing career placement with AI-powered matching and comprehensive management tools.
@@ -575,7 +575,7 @@ export default function HowItWorksPage() {
             </div>
           </div>
           <div className="border-t border-navy-800 mt-12 pt-8 text-center text-navy-300">
-            <p>&copy; 2024 Skint. All rights reserved.</p>
+            <p>&copy; 2024 Prashiskshan. All rights reserved.</p>
           </div>
         </div>
       </footer>

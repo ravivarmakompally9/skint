@@ -109,12 +109,38 @@ export default function OpenResumeIntegration() {
   ]
 
   const handleInputChange = (section: string, field: string, value: any) => {
-    setResumeData(prev => ({
-      ...prev,
-      [section]: typeof value === 'object' && field.includes('.') 
-        ? { ...prev[section as keyof ResumeData], [field.split('.')[1]]: value }
-        : { ...prev[section as keyof ResumeData], [field]: value }
-    }))
+    setResumeData(prev => {
+      // Handle dotted field path like "personalInfo.name"
+      if (field.includes('.')) {
+        const [parentKey, childKey] = field.split('.')
+        const parent = parentKey as keyof ResumeData
+        return {
+          ...prev,
+          [parent]: {
+            ...(prev[parent] as any),
+            [childKey]: value
+          }
+        }
+      }
+
+      // If a section is provided, update that section object field
+      if (section) {
+        const sectionKey = section as keyof ResumeData
+        return {
+          ...prev,
+          [sectionKey]: {
+            ...(prev[sectionKey] as any),
+            [field]: value
+          }
+        }
+      }
+
+      // Otherwise update top-level field on the resume data
+      return {
+        ...prev,
+        [field]: value
+      }
+    })
   }
 
   const addExperience = () => {
@@ -248,7 +274,7 @@ export default function OpenResumeIntegration() {
 
       {/* Main Content */}
       <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
-        <TabsList className="grid w-full grid-cols-4">
+        <TabsList className="w-full overflow-x-auto scrollbar-hide">
           <TabsTrigger value="builder">Resume Builder</TabsTrigger>
           <TabsTrigger value="parser">Resume Parser</TabsTrigger>
           <TabsTrigger value="templates">Templates</TabsTrigger>

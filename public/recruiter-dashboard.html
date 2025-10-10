@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recruiter Dashboard - Skint</title>
+    <title>Recruiter Dashboard - Prashiskshan</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
     <style>
@@ -27,6 +27,25 @@
             background-color: #ea580c;
             color: white;
         }
+  /* Ensures all cards in grid align properly */
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    align-items: stretch;
+  }
+  .card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+              display: none;
+            }
+            .scrollbar-hide {
+              -ms-overflow-style: none;  /* IE and Edge */
+              scrollbar-width: none;     /* Firefox */
+            }
     </style>
 </head>
 <body class="min-h-screen bg-gradient-to-br from-orange-50 via-red-50 to-pink-50">
@@ -36,17 +55,17 @@
             <div class="flex items-center justify-between">
                 <a href="/" class="flex items-center space-x-2 hover:opacity-80 transition-opacity">
                     <div class="w-8 h-8 bg-gradient-to-r from-orange-600 to-red-600 rounded-lg flex items-center justify-center">
-                        <span class="text-white font-bold text-lg">S</span>
+                        <span class="text-white font-bold text-lg">P</span>
                     </div>
                     <span class="text-2xl font-bold bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent">
-                        Skint
+                        Prashiskshan
                     </span>
                 </a>
                 
                 <div class="flex items-center space-x-4">
                     <button class="flex items-center space-x-2 px-3 py-2 rounded-lg hover:bg-gray-100 transition-colors">
                         <i data-lucide="bell" class="h-4 w-4"></i>
-                        <span>Notifications</span>
+                        
                         <span class="bg-red-500 text-white text-xs px-2 py-1 rounded-full">3</span>
                     </button>
                     <a href="/" class="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors">
@@ -113,34 +132,36 @@
 
         <!-- Main Content Tabs -->
         <div class="bg-white rounded-lg shadow-sm">
-            <div class="border-b">
-                <nav class="flex space-x-8 px-6">
-                    <button class="tab-button active py-4 px-2 border-b-2 border-orange-500 text-orange-600 font-medium" onclick="showTab('overview')">
-                        Overview
-                    </button>
-                    <button class="tab-button py-4 px-2 text-gray-500 hover:text-gray-700" onclick="showTab('post-job')">
-                        Post Job
-                    </button>
-                    <button class="tab-button py-4 px-2 text-gray-500 hover:text-gray-700" onclick="showTab('candidates')">
-                        Candidates
-                    </button>
-                    <button class="tab-button py-4 px-2 text-gray-500 hover:text-gray-700" onclick="showTab('interviews')">
-                        Interviews
-                    </button>
-                    <button class="tab-button py-4 px-2 text-gray-500 hover:text-gray-700" onclick="showTab('feedback')">
-                        Feedback
-                    </button>
-                    <button class="tab-button py-4 px-2 text-gray-500 hover:text-gray-700" onclick="showTab('ai-suggestions')">
-                        AI Suggestions
-                    </button>
-                    <button class="tab-button py-4 px-2 text-gray-500 hover:text-gray-700" onclick="showTab('company')">
-                        Company
-                    </button>
-                    <button class="tab-button py-4 px-2 text-gray-500 hover:text-gray-700" onclick="showTab('analytics')">
-                        Analytics
-                    </button>
-                </nav>
+            <div class="border-b overflow-x-auto">
+              <nav class="flex space-x-6 px-6 min-w-max sm:min-w-full overflow-x-auto scrollbar-hide">
+                <button class="tab-button active py-4 px-2 border-b-2 border-orange-500 text-orange-600 font-medium whitespace-nowrap" onclick="showTab('overview')">
+                  Overview
+                </button>
+                <button class="tab-button py-4 px-2 text-gray-500 hover:text-gray-700 whitespace-nowrap" onclick="showTab('post-job')">
+                  Post Job
+                </button>
+                <button class="tab-button py-4 px-2 text-gray-500 hover:text-gray-700 whitespace-nowrap" onclick="showTab('candidates')">
+                  Candidates
+                </button>
+                <button class="tab-button py-4 px-2 text-gray-500 hover:text-gray-700 whitespace-nowrap" onclick="showTab('interviews')">
+                  Interviews
+                </button>
+                <button class="tab-button py-4 px-2 text-gray-500 hover:text-gray-700 whitespace-nowrap" onclick="showTab('feedback')">
+                  Feedback
+                </button>
+                <button class="tab-button py-4 px-2 text-gray-500 hover:text-gray-700 whitespace-nowrap" onclick="showTab('ai-suggestions')">
+                  AI Suggestions
+                </button>
+                <button class="tab-button py-4 px-2 text-gray-500 hover:text-gray-700 whitespace-nowrap" onclick="showTab('company')">
+                  Company
+                </button>
+                <button class="tab-button py-4 px-2 text-gray-500 hover:text-gray-700 whitespace-nowrap" onclick="showTab('analytics')">
+                  Analytics
+                </button>
+              </nav>
             </div>
+          </div>
+          
 
             <!-- Overview Tab -->
             <div id="overview" class="tab-content active p-6">
@@ -293,93 +314,91 @@
 
                     <!-- Candidates List -->
                     <div class="space-y-4">
-                        <div class="border rounded-lg p-4 hover:shadow-md transition-shadow">
-                            <div class="flex items-center justify-between">
-                                <div class="flex items-center space-x-4">
-                                    <input type="checkbox" class="h-4 w-4">
-                                    <div class="flex-1">
-                                        <div class="flex items-center space-x-3">
-                                            <h4 class="font-semibold text-lg">John Doe</h4>
-                                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">95% Match</span>
-                                        </div>
-                                        <p class="text-gray-600">john@university.edu</p>
-                                        <div class="flex items-center space-x-4 mt-2 text-sm text-gray-500">
-                                            <span>IIT Delhi</span>
-                                            <span>GPA: 8.5</span>
-                                            <span>Experience: 2 years</span>
-                                        </div>
-                                        <div class="flex flex-wrap gap-1 mt-2">
-                                            <span class="bg-gray-100 text-gray-800 px-2 py-1 rounded text-xs">React</span>
-                                            <span class="bg-gray-100 text-gray-800 px-2 py-1 rounded text-xs">Node.js</span>
-                                            <span class="bg-gray-100 text-gray-800 px-2 py-1 rounded text-xs">Python</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="flex items-center space-x-2">
-                                    <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">shortlisted</span>
-                                    <div class="flex space-x-2">
-                                        <button class="bg-green-600 text-white px-3 py-2 rounded-lg hover:bg-green-700 transition-colors flex items-center">
-                                            <i data-lucide="user-check" class="h-4 w-4 mr-1"></i>
-                                            Shortlist
-                                        </button>
-                                        <button class="bg-blue-600 text-white px-3 py-2 rounded-lg hover:bg-blue-700 transition-colors flex items-center">
-                                            <i data-lucide="calendar" class="h-4 w-4 mr-1"></i>
-                                            Interview
-                                        </button>
-                                        <button class="bg-red-600 text-white px-3 py-2 rounded-lg hover:bg-red-700 transition-colors flex items-center">
-                                            <i data-lucide="user-x" class="h-4 w-4 mr-1"></i>
-                                            Reject
-                                        </button>
-                                    </div>
-                                </div>
+                        <!-- Candidate Card 1 -->
+                        <div class="border rounded-lg p-5 hover:shadow-lg transition-shadow bg-white flex flex-col md:flex-row md:items-center justify-between gap-4">
+                          <div class="flex items-start md:items-center gap-4 flex-1">
+                            <input type="checkbox" class="h-4 w-4 mt-1 md:mt-0">
+                            <div class="flex-1">
+                              <div class="flex flex-wrap items-center gap-2 mb-1">
+                                <h4 class="font-semibold text-lg">John Doe</h4>
+                                <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">95% Match</span>
+                              </div>
+                              <p class="text-gray-600 text-sm">john@university.edu</p>
+                              <div class="flex flex-wrap gap-3 mt-2 text-sm text-gray-500">
+                                <span>IIT Delhi</span>
+                                <span>GPA: 8.5</span>
+                                <span>Experience: 2 years</span>
+                              </div>
+                              <div class="flex flex-wrap gap-2 mt-3">
+                                <span class="bg-gray-100 text-gray-800 px-2 py-1 rounded text-xs">React</span>
+                                <span class="bg-gray-100 text-gray-800 px-2 py-1 rounded text-xs">Node.js</span>
+                                <span class="bg-gray-100 text-gray-800 px-2 py-1 rounded text-xs">Python</span>
+                              </div>
                             </div>
-                        </div>
-                        
-                        <div class="border rounded-lg p-4 hover:shadow-md transition-shadow">
-                            <div class="flex items-center justify-between">
-                                <div class="flex items-center space-x-4">
-                                    <input type="checkbox" class="h-4 w-4">
-                                    <div class="flex-1">
-                                        <div class="flex items-center space-x-3">
-                                            <h4 class="font-semibold text-lg">Jane Smith</h4>
-                                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">88% Match</span>
-                                        </div>
-                                        <p class="text-gray-600">jane@university.edu</p>
-                                        <div class="flex items-center space-x-4 mt-2 text-sm text-gray-500">
-                                            <span>NIT Bangalore</span>
-                                            <span>GPA: 8.2</span>
-                                            <span>Experience: 1 year</span>
-                                        </div>
-                                        <div class="flex flex-wrap gap-1 mt-2">
-                                            <span class="bg-gray-100 text-gray-800 px-2 py-1 rounded text-xs">Python</span>
-                                            <span class="bg-gray-100 text-gray-800 px-2 py-1 rounded text-xs">Machine Learning</span>
-                                            <span class="bg-gray-100 text-gray-800 px-2 py-1 rounded text-xs">SQL</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="flex items-center space-x-2">
-                                    <span class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm">pending</span>
-                                    <div class="flex space-x-2">
-                                        <button class="bg-green-600 text-white px-3 py-2 rounded-lg hover:bg-green-700 transition-colors flex items-center">
-                                            <i data-lucide="user-check" class="h-4 w-4 mr-1"></i>
-                                            Shortlist
-                                        </button>
-                                        <button class="bg-blue-600 text-white px-3 py-2 rounded-lg hover:bg-blue-700 transition-colors flex items-center">
-                                            <i data-lucide="calendar" class="h-4 w-4 mr-1"></i>
-                                            Interview
-                                        </button>
-                                        <button class="bg-red-600 text-white px-3 py-2 rounded-lg hover:bg-red-700 transition-colors flex items-center">
-                                            <i data-lucide="user-x" class="h-4 w-4 mr-1"></i>
-                                            Reject
-                                        </button>
-                                    </div>
-                                </div>
+                          </div>
+                      
+                          <div class="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-3">
+                            <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm self-start sm:self-center">Shortlisted</span>
+                            <div class="flex flex-wrap gap-2">
+                              <button class="bg-green-600 text-white px-3 py-2 rounded-lg hover:bg-green-700 transition-colors flex items-center">
+                                <i data-lucide="user-check" class="h-4 w-4 mr-1"></i>
+                                Shortlist
+                              </button>
+                              <button class="bg-blue-600 text-white px-3 py-2 rounded-lg hover:bg-blue-700 transition-colors flex items-center">
+                                <i data-lucide="calendar" class="h-4 w-4 mr-1"></i>
+                                Interview
+                              </button>
+                              <button class="bg-red-600 text-white px-3 py-2 rounded-lg hover:bg-red-700 transition-colors flex items-center">
+                                <i data-lucide="user-x" class="h-4 w-4 mr-1"></i>
+                                Reject
+                              </button>
                             </div>
+                          </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-
+                      
+                        <!-- Candidate Card 2 -->
+                        <div class="border rounded-lg p-5 hover:shadow-lg transition-shadow bg-white flex flex-col md:flex-row md:items-center justify-between gap-4">
+                          <div class="flex items-start md:items-center gap-4 flex-1">
+                            <input type="checkbox" class="h-4 w-4 mt-1 md:mt-0">
+                            <div class="flex-1">
+                              <div class="flex flex-wrap items-center gap-2 mb-1">
+                                <h4 class="font-semibold text-lg">Jane Smith</h4>
+                                <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">88% Match</span>
+                              </div>
+                              <p class="text-gray-600 text-sm">jane@university.edu</p>
+                              <div class="flex flex-wrap gap-3 mt-2 text-sm text-gray-500">
+                                <span>NIT Bangalore</span>
+                                <span>GPA: 8.2</span>
+                                <span>Experience: 1 year</span>
+                              </div>
+                              <div class="flex flex-wrap gap-2 mt-3">
+                                <span class="bg-gray-100 text-gray-800 px-2 py-1 rounded text-xs">Python</span>
+                                <span class="bg-gray-100 text-gray-800 px-2 py-1 rounded text-xs">Machine Learning</span>
+                                <span class="bg-gray-100 text-gray-800 px-2 py-1 rounded text-xs">SQL</span>
+                              </div>
+                            </div>
+                          </div>
+                      
+                          <div class="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-3">
+                            <span class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm self-start sm:self-center">Pending</span>
+                            <div class="flex flex-wrap gap-2">
+                              <button class="bg-green-600 text-white px-3 py-2 rounded-lg hover:bg-green-700 transition-colors flex items-center">
+                                <i data-lucide="user-check" class="h-4 w-4 mr-1"></i>
+                                Shortlist
+                              </button>
+                              <button class="bg-blue-600 text-white px-3 py-2 rounded-lg hover:bg-blue-700 transition-colors flex items-center">
+                                <i data-lucide="calendar" class="h-4 w-4 mr-1"></i>
+                                Interview
+                              </button>
+                              <button class="bg-red-600 text-white px-3 py-2 rounded-lg hover:bg-red-700 transition-colors flex items-center">
+                                <i data-lucide="user-x" class="h-4 w-4 mr-1"></i>
+                                Reject
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      
             <!-- Interviews Tab -->
             <div id="interviews" class="tab-content p-6">
                 <div class="bg-gray-50 rounded-lg p-6">

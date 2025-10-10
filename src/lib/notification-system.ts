@@ -372,7 +372,7 @@ class NotificationSystem {
   initializeSampleNotifications() {
     this.createNotification({
       type: 'info',
-      title: 'Welcome to Skint',
+      title: 'Welcome to Prashiskshan',
       message: 'Your dashboard is ready! Start by updating your profile.',
       userId: 'student_1',
       userRole: 'student'

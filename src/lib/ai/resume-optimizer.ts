@@ -128,8 +128,8 @@ export class ResumeOptimizer {
     const issues: string[] = []
     const recommendations: string[] = []
 
-    // Check for essential sections
-    const hasContactInfo = student.profile.phone && student.profile.email
+    // Check for essential sections (profile may be stored separately; use optional chaining)
+    const hasContactInfo = Boolean((student as any).profile?.phone && (student as any).profile?.email)
     const hasEducation = student.academicInfo.university && student.academicInfo.program
     const hasExperience = student.experience.length > 0
     const hasSkills = student.skills.length > 0

@@ -203,7 +203,7 @@ export function SystemIntegration({ userRole, userId, children }: SystemIntegrat
  * Hook for accessing system integration features
  */
 export function useSystemIntegration(userRole: string, userId: string) {
-  const [dashboardData, setDashboardData] = useState(null)
+  const [dashboardData, setDashboardData] = useState<any>(null)
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {

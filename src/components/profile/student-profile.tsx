@@ -153,7 +153,7 @@ export default function StudentProfile() {
         transition={{ duration: 0.6, delay: 0.1 }}
       >
         <Tabs defaultValue="personal" className="w-full">
-          <TabsList className="grid w-full grid-cols-4">
+          <TabsList className="w-full overflow-x-auto scrollbar-hide">
             <TabsTrigger value="personal">Personal</TabsTrigger>
             <TabsTrigger value="skills">Skills</TabsTrigger>
             <TabsTrigger value="certifications">Certifications</TabsTrigger>

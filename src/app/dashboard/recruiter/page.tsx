@@ -163,7 +163,7 @@ export default function RecruiterDashboard() {
                 <span className="text-white font-bold text-lg">S</span>
               </div>
               <span className="text-2xl font-bold bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent">
-                Skint
+                Prashiskshan
               </span>
             </Link>
             
@@ -275,7 +275,7 @@ export default function RecruiterDashboard() {
 
         {/* Main Content Tabs */}
         <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
-          <TabsList className="grid w-full grid-cols-8">
+          <TabsList className="w-full overflow-x-auto scrollbar-hide">
             <TabsTrigger value="overview">Overview</TabsTrigger>
             <TabsTrigger value="post-job">Post Job</TabsTrigger>
             <TabsTrigger value="candidates">Candidates</TabsTrigger>

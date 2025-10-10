@@ -65,7 +65,7 @@ export default function DashboardHubPage() {
               <span className="text-white font-bold text-lg">S</span>
             </div>
             <span className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-              Skint
+              Prashiskshan
             </span>
           </Link>
           

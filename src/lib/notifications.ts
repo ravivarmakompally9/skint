@@ -77,11 +77,12 @@ class NotificationService {
     }
 
     try {
+      const applicationServerKey = this.urlBase64ToUint8Array(
+        process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY || ''
+      ) as unknown as BufferSource
       const subscription = await this.registration.pushManager.subscribe({
         userVisibleOnly: true,
-        applicationServerKey: this.urlBase64ToUint8Array(
-          process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY || ''
-        )
+        applicationServerKey
       })
 
       // Send subscription to server
@@ -105,8 +106,7 @@ class NotificationService {
       body: payload.body,
       icon: payload.icon || '/icons/icon-192x192.png',
       badge: payload.badge || '/icons/icon-72x72.png',
-      data: payload.data,
-      actions: payload.actions
+      data: payload.data
     })
 
     notification.onclick = () => {

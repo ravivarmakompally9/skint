@@ -189,7 +189,7 @@ export default function HelpCenter() {
             Help Center
           </h1>
           <p className="text-xl text-gray-600 dark:text-gray-400 mb-6">
-            Find answers, get support, and learn how to make the most of Skint
+            Find answers, get support, and learn how to make the most of Prashiskshan
           </p>
           
           {/* Search Bar */}

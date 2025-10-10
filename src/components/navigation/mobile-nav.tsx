@@ -133,7 +133,7 @@ export default function MobileNav({ user, notifications = 0 }: MobileNavProps) {
               <div className={`w-8 h-8 rounded-lg bg-gradient-to-r ${getRoleColor(user.role)} flex items-center justify-center`}>
                 <span className="text-white font-bold text-sm">S</span>
               </div>
-              <span className="text-lg font-bold text-gray-900 dark:text-white">Skint</span>
+              <span className="text-lg font-bold text-gray-900 dark:text-white">Prashiskshan</span>
             </div>
           </div>
           
@@ -182,7 +182,7 @@ export default function MobileNav({ user, notifications = 0 }: MobileNavProps) {
                     <span className="text-white font-bold text-lg">S</span>
                   </div>
                   <div>
-                    <h2 className="font-bold text-gray-900 dark:text-white">Skint</h2>
+                    <h2 className="font-bold text-gray-900 dark:text-white">Prashiskshan</h2>
                     <p className="text-sm text-gray-500">Placement Management</p>
                   </div>
                 </div>

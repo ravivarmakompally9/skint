@@ -12,7 +12,7 @@ import {
   TrendingUp, BarChart3, PieChart, Activity, Target, Calendar,
   Briefcase, Users, Award, Clock, CheckCircle, XCircle,
   Star, Eye, Download, Share, RefreshCw, Filter, Search,
-  ArrowUp, ArrowDown, Minus, Zap, Brain, Trophy, BookOpen
+  ArrowUp, ArrowDown, Minus, Zap, Brain, Trophy, BookOpen, Plus
 } from 'lucide-react'
 
 // Performance Analytics Component
