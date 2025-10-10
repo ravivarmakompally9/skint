@@ -152,7 +152,7 @@ export default function NotificationCenter() {
         transition={{ duration: 0.6, delay: 0.1 }}
       >
         <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-          <TabsList className="grid w-full grid-cols-5">
+          <TabsList className="w-full overflow-x-auto scrollbar-hide">
             {Object.entries(notificationTypes).map(([key, type]) => (
               <TabsTrigger key={key} value={key} className="flex items-center space-x-2">
                 <span>{type.label}</span>

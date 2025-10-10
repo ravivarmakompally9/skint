@@ -37,7 +37,7 @@ interface OnboardingStep {
 const onboardingSteps: OnboardingStep[] = [
   {
     id: 'welcome',
-    title: 'Welcome to Skint!',
+    title: 'Welcome to Prashiskshan!',
     description: 'Your comprehensive placement management platform',
     icon: Star,
     color: 'text-blue-600',
@@ -62,7 +62,7 @@ const onboardingSteps: OnboardingStep[] = [
   {
     id: 'features',
     title: 'Explore Features',
-    description: 'Discover what Skint can do for you',
+    description: 'Discover what Prashiskshan can do for you',
     icon: Zap,
     color: 'text-orange-600',
     bgColor: 'bg-orange-100 dark:bg-orange-900/20'
@@ -156,7 +156,7 @@ export default function OnboardingFlow() {
             </motion.div>
             <div>
               <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
-                Welcome to Skint!
+                Welcome to Prashiskshan!
               </h2>
               <p className="text-lg text-gray-600 dark:text-gray-400 mb-6">
                 Your comprehensive platform for internship, training & placement management
@@ -319,7 +319,7 @@ export default function OnboardingFlow() {
                 Explore Features
               </h2>
               <p className="text-gray-600 dark:text-gray-400">
-                Discover what Skint can do for you
+                Discover what Prashiskshan can do for you
               </p>
             </div>
             
@@ -370,7 +370,7 @@ export default function OnboardingFlow() {
                 You're All Set!
               </h2>
               <p className="text-lg text-gray-600 dark:text-gray-400 mb-6">
-                Welcome to your personalized Skint experience
+                Welcome to your personalized Prashiskshan experience
               </p>
               <div className="bg-gray-50 dark:bg-gray-800 rounded-lg p-6 max-w-md mx-auto">
                 <h3 className="font-semibold text-gray-900 dark:text-white mb-2">

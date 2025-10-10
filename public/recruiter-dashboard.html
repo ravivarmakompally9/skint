@@ -27,6 +27,13 @@
             background-color: #ea580c;
             color: white;
         }
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        .scrollbar-hide {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;     /* Firefox */
+        }
     </style>
 </head>
 <body class="min-h-screen bg-gradient-to-br from-orange-50 via-red-50 to-pink-50">
@@ -39,14 +46,13 @@
                         <span class="text-white font-bold text-lg">S</span>
                     </div>
                     <span class="text-2xl font-bold bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent">
-                        Skint
+                        Prashiskshan
                     </span>
                 </a>
                 
                 <div class="flex items-center space-x-4">
                     <button class="flex items-center space-x-2 px-3 py-2 rounded-lg hover:bg-gray-100 transition-colors">
                         <i data-lucide="bell" class="h-4 w-4"></i>
-                        <span>Notifications</span>
                         <span class="bg-red-500 text-white text-xs px-2 py-1 rounded-full">3</span>
                     </button>
                     <a href="/" class="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors">
@@ -114,29 +120,29 @@
         <!-- Main Content Tabs -->
         <div class="bg-white rounded-lg shadow-sm">
             <div class="border-b">
-                <nav class="flex space-x-8 px-6">
-                    <button class="tab-button active py-4 px-2 border-b-2 border-orange-500 text-orange-600 font-medium" onclick="showTab('overview')">
+                <nav class="flex space-x-8 px-6 overflow-x-auto whitespace-nowrap scrollbar-hide">
+                    <button class="tab-button active py-4 px-2 border-b-2 border-orange-500 text-orange-600 font-medium flex-shrink-0" onclick="showTab('overview')">
                         Overview
                     </button>
-                    <button class="tab-button py-4 px-2 text-gray-500 hover:text-gray-700" onclick="showTab('post-job')">
+                    <button class="tab-button py-4 px-2 text-gray-500 hover:text-gray-700 flex-shrink-0" onclick="showTab('post-job')">
                         Post Job
                     </button>
-                    <button class="tab-button py-4 px-2 text-gray-500 hover:text-gray-700" onclick="showTab('candidates')">
+                    <button class="tab-button py-4 px-2 text-gray-500 hover:text-gray-700 flex-shrink-0" onclick="showTab('candidates')">
                         Candidates
                     </button>
-                    <button class="tab-button py-4 px-2 text-gray-500 hover:text-gray-700" onclick="showTab('interviews')">
+                    <button class="tab-button py-4 px-2 text-gray-500 hover:text-gray-700 flex-shrink-0" onclick="showTab('interviews')">
                         Interviews
                     </button>
-                    <button class="tab-button py-4 px-2 text-gray-500 hover:text-gray-700" onclick="showTab('feedback')">
+                    <button class="tab-button py-4 px-2 text-gray-500 hover:text-gray-700 flex-shrink-0" onclick="showTab('feedback')">
                         Feedback
                     </button>
-                    <button class="tab-button py-4 px-2 text-gray-500 hover:text-gray-700" onclick="showTab('ai-suggestions')">
+                    <button class="tab-button py-4 px-2 text-gray-500 hover:text-gray-700 flex-shrink-0" onclick="showTab('ai-suggestions')">
                         AI Suggestions
                     </button>
-                    <button class="tab-button py-4 px-2 text-gray-500 hover:text-gray-700" onclick="showTab('company')">
+                    <button class="tab-button py-4 px-2 text-gray-500 hover:text-gray-700 flex-shrink-0" onclick="showTab('company')">
                         Company
                     </button>
-                    <button class="tab-button py-4 px-2 text-gray-500 hover:text-gray-700" onclick="showTab('analytics')">
+                    <button class="tab-button py-4 px-2 text-gray-500 hover:text-gray-700 flex-shrink-0" onclick="showTab('analytics')">
                         Analytics
                     </button>
                 </nav>
@@ -412,13 +418,13 @@
                                         <span>Technical Interview</span>
                                     </div>
                                 </div>
-                                <div class="flex items-center space-x-4">
+                                <!-- <div class="flex items-center space-x-4">
                                     <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">scheduled</span>
                                     <button class="bg-gray-100 text-gray-700 px-3 py-2 rounded-lg hover:bg-gray-200 transition-colors flex items-center">
                                         <i data-lucide="edit" class="h-4 w-4 mr-1"></i>
                                         Edit
                                     </button>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                         
@@ -441,10 +447,10 @@
                                 </div>
                                 <div class="flex items-center space-x-4">
                                     <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">completed</span>
-                                    <button class="bg-gray-100 text-gray-700 px-3 py-2 rounded-lg hover:bg-gray-200 transition-colors flex items-center">
+                                    <!-- <button class="bg-gray-100 text-gray-700 px-3 py-2 rounded-lg hover:bg-gray-200 transition-colors flex items-center">
                                         <i data-lucide="edit" class="h-4 w-4 mr-1"></i>
                                         Edit
-                                    </button>
+                                    </button> -->
                                 </div>
                             </div>
                         </div>
@@ -521,10 +527,10 @@
                                     </div>
                                 </div>
                                 <div class="flex space-x-2">
-                                    <button class="bg-purple-600 text-white px-3 py-2 rounded-lg hover:bg-purple-700 transition-colors flex items-center">
+                                    <!-- <button class="bg-purple-600 text-white px-3 py-2 rounded-lg hover:bg-purple-700 transition-colors flex items-center">
                                         <i data-lucide="eye" class="h-4 w-4 mr-1"></i>
                                         View Profile
-                                    </button>
+                                    </button> -->
                                     <button class="bg-gray-100 text-gray-700 px-3 py-2 rounded-lg hover:bg-gray-200 transition-colors flex items-center">
                                         <i data-lucide="user-check" class="h-4 w-4 mr-1"></i>
                                         Shortlist
@@ -669,6 +675,7 @@
             
             // Add active class to clicked button
             event.target.classList.add('active');
+            event.target.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
         }
     </script>
 </body>

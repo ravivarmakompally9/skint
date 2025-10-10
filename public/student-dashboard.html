@@ -40,6 +40,15 @@
         .tab-content {
             animation: fadeIn 0.3s ease-in;
         }
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        .scrollbar-hide {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;     /* Firefox */
+        }
+
+
     </style>
 </head>
 <body class="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50">
@@ -52,7 +61,7 @@
                         <span class="text-white font-bold text-lg">S</span>
                     </div>
                     <span class="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                        Skint
+                        Prashiskshan
                     </span>
                 </a>
                 
@@ -60,12 +69,11 @@
                     <div class="relative">
                         <button class="flex items-center space-x-2 px-3 py-2 rounded-lg hover:bg-gray-100 transition-colors" onclick="toggleNotifications()">
                             <i data-lucide="bell" class="h-4 w-4"></i>
-                            <span>Notifications</span>
                             <span class="bg-red-500 text-white text-xs px-2 py-1 rounded-full">3</span>
                         </button>
                         
                         <!-- Notifications Dropdown -->
-                        <div id="notificationsDropdown" class="absolute right-0 top-12 w-80 bg-white rounded-lg shadow-xl border z-50 hidden">
+                        <div id="notificationsDropdown" class="absolute right-0 top-12 w-80 max-w-[calc(100vw-2rem)] bg-white rounded-lg shadow-xl border z-50 hidden">
                             <div class="p-4 border-b">
                                 <h3 class="font-semibold text-gray-900">Notifications</h3>
                             </div>
@@ -173,26 +181,26 @@
         <!-- Main Content Tabs -->
         <div class="bg-white rounded-lg shadow-sm">
             <div class="border-b">
-                <nav class="flex space-x-8 px-6">
-                    <button class="tab-button active py-4 px-2 border-b-2 border-blue-500 text-blue-600 font-medium" onclick="showTab('overview', this)">
+                <nav class="flex space-x-8 px-6 overflow-x-auto whitespace-nowrap scrollbar-hide">
+                    <button class="tab-button active py-4 px-2 border-b-2 border-blue-500 text-blue-600 font-medium flex-shrink-0" onclick="showTab('overview', this)">
                         Overview
                     </button>
-                    <button class="tab-button py-4 px-2 text-gray-500 hover:text-gray-700" onclick="showTab('profile', this)">
+                    <button class="tab-button py-4 px-2 text-gray-500 hover:text-gray-700 flex-shrink-0" onclick="showTab('profile', this)">
                         Profile
                     </button>
-                    <button class="tab-button py-4 px-2 text-gray-500 hover:text-gray-700" onclick="showTab('resume', this)">
+                    <button class="tab-button py-4 px-2 text-gray-500 hover:text-gray-700 flex-shrink-0" onclick="showTab('resume', this)">
                         Resume Builder
                     </button>
-                    <button class="tab-button py-4 px-2 text-gray-500 hover:text-gray-700" onclick="showTab('applications', this)">
+                    <button class="tab-button py-4 px-2 text-gray-500 hover:text-gray-700 flex-shrink-0" onclick="showTab('applications', this)">
                         Applications
                     </button>
-                    <button class="tab-button py-4 px-2 text-gray-500 hover:text-gray-700" onclick="showTab('recommendations', this)">
+                    <button class="tab-button py-4 px-2 text-gray-500 hover:text-gray-700 flex-shrink-0" onclick="showTab('recommendations', this)">
                         AI Recommendations
                     </button>
-                    <button class="tab-button py-4 px-2 text-gray-500 hover:text-gray-700" onclick="showTab('progress', this)">
+                    <button class="tab-button py-4 px-2 text-gray-500 hover:text-gray-700 flex-shrink-0" onclick="showTab('progress', this)">
                         Progress
                     </button>
-                    <button class="tab-button py-4 px-2 text-gray-500 hover:text-gray-700" onclick="showTab('chatbot', this)">
+                    <button class="tab-button py-4 px-2 text-gray-500 hover:text-gray-700 flex-shrink-0" onclick="showTab('chatbot', this)">
                         AI Chat
                     </button>
                 </nav>
@@ -343,20 +351,20 @@
                     
                     <!-- Resume Builder Tabs -->
                     <div class="mb-6">
-                        <div class="flex space-x-4 border-b">
-                            <button class="resume-tab-button active py-2 px-4 border-b-2 border-blue-500 text-blue-600 font-medium" onclick="showResumeTab('builder', this)">
+                        <nav class="flex space-x-8 px-6 overflow-x-auto whitespace-nowrap no-scrollbar border-b">
+                            <button class="resume-tab-button active py-4 px-2 border-b-2 border-blue-500 text-blue-600 font-medium" onclick="showResumeTab('builder', this)">
                                 Resume Builder
                             </button>
-                            <button class="resume-tab-button py-2 px-4 text-gray-500 hover:text-gray-700" onclick="showResumeTab('parser', this)">
+                            <button class="resume-tab-button py-4 px-2 text-gray-500 hover:text-gray-700" onclick="showResumeTab('parser', this)">
                                 Resume Parser
                             </button>
-                            <button class="resume-tab-button py-2 px-4 text-gray-500 hover:text-gray-700" onclick="showResumeTab('ats', this)">
+                            <button class="resume-tab-button py-4 px-2 text-gray-500 hover:text-gray-700" onclick="showResumeTab('ats', this)">
                                 ATS Checker
                             </button>
-                            <button class="resume-tab-button py-2 px-4 text-gray-500 hover:text-gray-700" onclick="showResumeTab('templates', this)">
+                            <button class="resume-tab-button py-4 px-2 text-gray-500 hover:text-gray-700" onclick="showResumeTab('templates', this)">
                                 Templates
                             </button>
-                        </div>
+                        </nav>
                     </div>
 
                     <!-- Resume Builder Content -->
@@ -482,16 +490,16 @@
                         </div>
 
                         <!-- Action Buttons -->
-                        <div class="mt-8 flex justify-center space-x-4">
-                            <button class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors flex items-center">
+                        <div class="mt-8 flex flex-col sm:flex-row justify-center gap-4">
+                            <button class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors flex items-center justify-center text-sm">
                                 <i data-lucide="save" class="h-4 w-4 mr-2"></i>
                                 Save Resume
                             </button>
-                            <button class="bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition-colors flex items-center">
+                            <button class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors flex items-center justify-center text-sm">
                                 <i data-lucide="download" class="h-4 w-4 mr-2"></i>
                                 Download PDF
                             </button>
-                            <button class="bg-purple-600 text-white px-6 py-3 rounded-lg hover:bg-purple-700 transition-colors flex items-center">
+                            <button class="bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition-colors flex items-center justify-center text-sm">
                                 <i data-lucide="eye" class="h-4 w-4 mr-2"></i>
                                 Preview Resume
                             </button>
@@ -581,51 +589,65 @@
             </div>
 
             <!-- Applications Tab -->
-            <div id="applications" class="tab-content p-6">
+            <div id="applications" class="tab-content p-6 active" style="display: block;">
                 <div class="bg-gray-50 rounded-lg p-6">
-                    <div class="flex items-center justify-between mb-6">
-                        <h3 class="text-lg font-semibold flex items-center">
-                            <i data-lucide="briefcase" class="h-5 w-5 mr-2"></i>
-                            Application Tracker
-                        </h3>
-                        <div class="flex space-x-2">
-                            <button class="bg-gray-100 text-gray-700 px-3 py-2 rounded-lg hover:bg-gray-200 transition-colors flex items-center">
-                                <i data-lucide="search" class="h-4 w-4 mr-1"></i>
-                                Search
-                            </button>
-                            <button class="bg-gray-100 text-gray-700 px-3 py-2 rounded-lg hover:bg-gray-200 transition-colors flex items-center">
-                                <i data-lucide="filter" class="h-4 w-4 mr-1"></i>
-                                Filter
-                            </button>
-                        </div>
+                  <div class="flex items-center justify-between mb-6 flex-wrap gap-2">
+                    <h3 class="text-lg font-semibold flex items-center">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="briefcase" class="lucide lucide-briefcase h-5 w-5 mr-2">
+                        <path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                        <rect width="20" height="14" x="2" y="6" rx="2"></rect>
+                      </svg>
+                      Application Tracker
+                    </h3>
+                    <div class="flex flex-wrap space-x-2">
+                      <button class="bg-gray-100 text-gray-700 px-3 py-2 rounded-lg hover:bg-gray-200 transition-colors flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="search" class="lucide lucide-search h-4 w-4 mr-1">
+                          <path d="m21 21-4.34-4.34"></path>
+                          <circle cx="11" cy="11" r="8"></circle>
+                        </svg>
+                        Search
+                      </button>
+                      <button class="bg-gray-100 text-gray-700 px-3 py-2 rounded-lg hover:bg-gray-200 transition-colors flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="filter" class="lucide lucide-filter h-4 w-4 mr-1">
+                          <path d="M10 20a1 1 0 0 0 .553.895l2 1A1 1 0 0 0 14 21v-7a2 2 0 0 1 .517-1.341L21.74 4.67A1 1 0 0 0 21 3H3a1 1 0 0 0-.742 1.67l7.225 7.989A2 2 0 0 1 10 14z"></path>
+                        </svg>
+                        Filter
+                      </button>
                     </div>
-                    
-                    <div class="space-y-4">
-                        <div class="bg-white border rounded-lg p-4 hover:shadow-md transition-shadow">
-                            <div class="flex items-center justify-between">
-                                <div class="flex-1">
-                                    <h4 class="font-semibold text-lg">Software Engineer Intern</h4>
-                                    <p class="text-gray-600">Google</p>
-                                    <div class="flex items-center space-x-4 mt-2 text-sm text-gray-500">
-                                        <span>Applied: 2024-01-15</span>
-                                        <span>Deadline: 2024-02-15</span>
-                                    </div>
-                                </div>
-                                <div class="flex items-center space-x-4">
-                                    <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm flex items-center">
-                                        <i data-lucide="star" class="h-3 w-3 mr-1"></i>
-                                        Shortlisted
-                                    </span>
-                                    <button class="bg-gray-100 text-gray-700 px-3 py-2 rounded-lg hover:bg-gray-200 transition-colors">
-                                        View Details
-                                    </button>
-                                </div>
-                            </div>
+                  </div>
+              
+                  <div class="space-y-4">
+                    <div class="bg-white border rounded-lg p-4 hover:shadow-md transition-shadow">
+                      <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                        <div class="flex-1">
+                          <h4 class="font-semibold text-lg">Software Engineer Intern</h4>
+                          <p class="text-gray-600">Google</p>
+              
+                          <!-- ✅ FIXED alignment section -->
+                          <div class="flex justify-between mt-2 text-sm text-gray-500">
+                            <span>Applied: 2024-01-15</span>
+                            <span>Deadline: 2024-02-15</span>
+                          </div>
+                          <!-- ✅ END -->
                         </div>
+              
+                        <div class="flex items-center space-x-4 sm:flex-nowrap flex-wrap">
+                          <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="star" class="lucide lucide-star h-3 w-3 mr-1">
+                              <path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"></path>
+                            </svg>
+                            Shortlisted
+                          </span>
+                          <button class="bg-blue-600 text-white px-3 py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm w-full sm:w-auto text-center">
+                            View Details
+                          </button>
+                        </div>
+                      </div>
                     </div>
+                  </div>
                 </div>
-            </div>
-
+              </div>
+              
             <!-- Enhanced AI Recommendations Tab -->
             <div id="recommendations" class="tab-content p-6">
                 <!-- Header Section -->
@@ -1043,19 +1065,26 @@
             
             // Show selected tab content
             const targetTab = document.getElementById(tabName);
-            if (targetTab) {
-                targetTab.classList.add('active');
-                targetTab.style.display = 'block';
-                console.log('Tab shown:', tabName); // Debug log
-            } else {
-                console.error('Tab not found:', tabName); // Debug log
+            if (!targetTab) {
+                console.error('Tab not found:', tabName);
+                return;
             }
+            // Ensure only this tab is visible
+            targetTab.classList.add('active');
+            targetTab.style.display = 'block';
             
             // Add active class to clicked button
             if (clickedButton) {
                 clickedButton.classList.add('active', 'border-blue-500', 'text-blue-600');
                 clickedButton.classList.remove('text-gray-500');
+                // Scroll the active button into view on mobile
+                clickedButton.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
             }
+            
+            // Force re-render to fix stuck tabs
+            setTimeout(() => {
+                targetTab.style.display = 'block';
+            }, 10);
         }
 
         function showResumeTab(tabName, clickedButton) {

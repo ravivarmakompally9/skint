@@ -1,12 +1,18 @@
 import { NextRequest, NextResponse } from 'next/server'
 import webpush from 'web-push'
 
-// Configure VAPID keys
-webpush.setVapidDetails(
-  'mailto:admin@skint.com',
-  process.env.VAPID_PUBLIC_KEY!,
-  process.env.VAPID_PRIVATE_KEY!
-)
+// Configure VAPID keys when available to avoid build-time failures
+const VAPID_PUBLIC_KEY = process.env.VAPID_PUBLIC_KEY
+const VAPID_PRIVATE_KEY = process.env.VAPID_PRIVATE_KEY
+if (VAPID_PUBLIC_KEY && VAPID_PRIVATE_KEY) {
+  webpush.setVapidDetails(
+    'mailto:admin@skint.com',
+    VAPID_PUBLIC_KEY,
+    VAPID_PRIVATE_KEY
+  )
+} else {
+  console.warn('VAPID keys are not set. Push notifications are disabled.')
+}
 
 export async function POST(request: NextRequest) {
   try {

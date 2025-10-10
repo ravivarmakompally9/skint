@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { Button } from '@/components/ui/button'
-import { ArrowRight, Users, Briefcase, TrendingUp, Shield, Zap, Globe, Star, CheckCircle, Sparkles, Rocket, Target, Award, BookOpen, Brain, Heart, Mail, Phone, MapPin, Linkedin, Twitter, Github, Menu, X, UserCheck, FileText, Calendar, BarChart3, MessageSquare, Settings, Bell, Search, Filter, Download, Upload, Eye, Edit, Trash2, Plus, ArrowLeft, Database, Lock, Clock, Smartphone, Monitor, Laptop, Server, Cloud, Wifi, Battery, Cpu, HardDrive, MemoryStick, Network, Router, ShieldCheck, Key, Fingerprint, EyeOff, AlertTriangle, CheckCircle2, XCircle, Info, HelpCircle, QuestionMarkCircle, Lightbulb, Handshake } from 'lucide-react'
+import { ArrowRight, Users, Briefcase, TrendingUp, Shield, Zap, Globe, Star, CheckCircle, Sparkles, Rocket, Target, Award, BookOpen, Brain, Heart, Mail, Phone, MapPin, Linkedin, Twitter, Github, Menu, X, UserCheck, FileText, Calendar, BarChart3, MessageSquare, Settings, Bell, Search, Filter, Download, Upload, Eye, Edit, Trash2, Plus, ArrowLeft, Database, Lock, Clock, Smartphone, Monitor, Laptop, Server, Cloud, Wifi, Battery, Cpu, HardDrive, MemoryStick, Network, Router, ShieldCheck, Key, Fingerprint, EyeOff, AlertTriangle, CheckCircle2, XCircle, Info, HelpCircle, Lightbulb } from 'lucide-react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
@@ -136,7 +136,7 @@ export default function FeaturesPage() {
                 <span className="text-white font-bold text-lg">S</span>
               </div>
               <span className="text-2xl font-bold bg-gradient-to-r from-navy-600 to-blue-600 bg-clip-text text-transparent">
-                Skint
+                Prashiskshan
               </span>
             </Link>
           </motion.div>
@@ -247,7 +247,7 @@ export default function FeaturesPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
           >
-            Discover the comprehensive suite of features that make Skint the leading placement management platform for universities and companies worldwide.
+            Discover the comprehensive suite of features that make Prashiskshan the leading placement management platform for universities and companies worldwide.
           </motion.p>
         </motion.div>
 
@@ -298,7 +298,7 @@ export default function FeaturesPage() {
         >
           <h2 className="text-4xl font-bold mb-4">Experience the Power</h2>
           <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
-            Ready to transform your placement process? Get started with Skint today and see the difference.
+            Ready to transform your placement process? Get started with Prashiskshan today and see the difference.
           </p>
           <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
             <Link href="/get-started">
@@ -336,7 +336,7 @@ export default function FeaturesPage() {
                 <div className="w-8 h-8 bg-gradient-to-r from-navy-600 to-blue-600 rounded-lg flex items-center justify-center">
                   <span className="text-white font-bold text-lg">S</span>
                 </div>
-                <span className="text-2xl font-bold">Skint</span>
+                <span className="text-2xl font-bold">Prashiskshan</span>
               </div>
               <p className="text-navy-300 mb-4">
                 Revolutionizing career placement with AI-powered matching and comprehensive management tools.
@@ -384,7 +384,7 @@ export default function FeaturesPage() {
             </div>
           </div>
           <div className="border-t border-navy-800 mt-12 pt-8 text-center text-navy-300">
-            <p>&copy; 2024 Skint. All rights reserved.</p>
+            <p>&copy; 2024 Prashiskshan. All rights reserved.</p>
           </div>
         </div>
       </footer>

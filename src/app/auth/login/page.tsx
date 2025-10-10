@@ -46,11 +46,9 @@ export default function LoginPage() {
 
   const handleLogin = (role: string) => {
     if (!name.trim()) {
-      alert('Please enter your name first')
       return
     }
     if (!email.trim()) {
-      alert('Please enter your email first')
       return
     }
 
@@ -69,9 +67,6 @@ export default function LoginPage() {
     localStorage.setItem('user', JSON.stringify(userData))
     console.log('User stored:', userData)
     
-    // Show success message
-    alert(`Welcome ${name}! Redirecting to your ${role} dashboard...`)
-    
     // Navigate to working static dashboards
     const dashboardUrls = {
       student: '/student-dashboard.html',
@@ -86,7 +81,7 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100">
+    <div className="min-h-screen bg-gradient-to-b from-white to-slate-50">
       {/* Header */}
       <header className="container mx-auto px-4 py-6">
         <nav className="flex items-center justify-between">
@@ -97,11 +92,11 @@ export default function LoginPage() {
               window.location.replace('/');
             }}
           >
-            <div className="w-8 h-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
+            <div className="w-8 h-8 bg-gradient-to-r from-sky-400 to-blue-500 rounded-lg flex items-center justify-center">
               <span className="text-white font-bold text-lg">S</span>
             </div>
-            <span className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-              Skint
+            <span className="text-2xl font-bold bg-gradient-to-r from-sky-600 to-blue-700 bg-clip-text text-transparent">
+              Prashiskshan
             </span>
           </button>
           

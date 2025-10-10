@@ -212,7 +212,7 @@ const notifications = [
                 <span className="text-white font-bold text-lg">S</span>
               </div>
               <span className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                Skint
+                Prashiskshan
               </span>
             </Link>
             
@@ -525,7 +525,7 @@ const notifications = [
         <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
           <div className="bg-white rounded-lg shadow-sm border p-4">
             <h3 className="text-lg font-semibold mb-4">🚀 Explore All 18+ Features:</h3>
-            <TabsList className="grid w-full grid-cols-6 bg-gray-100">
+            <TabsList className="w-full overflow-x-auto scrollbar-hide bg-gray-100">
               <TabsTrigger value="overview" className="data-[state=active]:bg-blue-500 data-[state=active]:text-white">
                 📊 Overview
               </TabsTrigger>

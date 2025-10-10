@@ -172,7 +172,7 @@ const achievements = [
                 <span className="text-white font-bold text-lg">S</span>
               </div>
                 <span className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                  Skint
+                  Prashiskshan
                 </span>
               </Link>
               
@@ -360,7 +360,7 @@ const achievements = [
 
           {/* Enhanced Main Content Tabs */}
           <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
-            <TabsList className="grid w-full grid-cols-9">
+            <TabsList className="block w-full max-w-full overflow-x-auto scrollbar-hide -mx-4 px-4">
               <TabsTrigger value="overview">Overview</TabsTrigger>
               <TabsTrigger value="profile">Profile</TabsTrigger>
               <TabsTrigger value="resume">Resume Builder</TabsTrigger>

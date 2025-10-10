@@ -153,7 +153,7 @@ export default function AnalyticsDashboard() {
         transition={{ duration: 0.6, delay: 0.2 }}
       >
         <Tabs defaultValue="overview" className="w-full">
-          <TabsList className="grid w-full grid-cols-4">
+        <TabsList className="w-full overflow-x-auto scrollbar-hide">
             <TabsTrigger value="overview">Overview</TabsTrigger>
             <TabsTrigger value="departments">Departments</TabsTrigger>
             <TabsTrigger value="companies">Companies</TabsTrigger>

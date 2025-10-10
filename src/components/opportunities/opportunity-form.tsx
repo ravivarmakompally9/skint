@@ -27,8 +27,24 @@ interface OpportunityFormProps {
   initialData?: any
 }
 
+interface OpportunityFormData {
+  title: string
+  company: string
+  type: string
+  location: string
+  salary: string
+  stipend: string
+  duration: string
+  deadline: string
+  description: string
+  requirements: string[]
+  skills: string[]
+  department: string
+  year: string
+}
+
 export default function OpportunityForm({ onSave, onCancel, initialData }: OpportunityFormProps) {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<OpportunityFormData>({
     title: initialData?.title || '',
     company: initialData?.company || '',
     type: initialData?.type || 'internship',
@@ -38,8 +54,8 @@ export default function OpportunityForm({ onSave, onCancel, initialData }: Oppor
     duration: initialData?.duration || '',
     deadline: initialData?.deadline || '',
     description: initialData?.description || '',
-    requirements: initialData?.requirements || [],
-    skills: initialData?.skills || [],
+    requirements: (initialData?.requirements as string[]) || [],
+    skills: (initialData?.skills as string[]) || [],
     department: initialData?.department || 'all',
     year: initialData?.year || 'all'
   })
@@ -64,7 +80,7 @@ export default function OpportunityForm({ onSave, onCancel, initialData }: Oppor
   const removeRequirement = (index: number) => {
     setFormData(prev => ({
       ...prev,
-      requirements: prev.requirements.filter((_, i) => i !== index)
+      requirements: prev.requirements.filter((_: string, i: number) => i !== index)
     }))
   }
 
@@ -81,7 +97,7 @@ export default function OpportunityForm({ onSave, onCancel, initialData }: Oppor
   const removeSkill = (index: number) => {
     setFormData(prev => ({
       ...prev,
-      skills: prev.skills.filter((_, i) => i !== index)
+      skills: prev.skills.filter((_: string, i: number) => i !== index)
     }))
   }
 
@@ -212,7 +228,7 @@ export default function OpportunityForm({ onSave, onCancel, initialData }: Oppor
                 </Button>
               </div>
               <div className="flex flex-wrap gap-2 mt-2">
-                {formData.requirements.map((req, index) => (
+                {formData.requirements.map((req: string, index: number) => (
                   <Badge key={index} variant="secondary" className="flex items-center space-x-1">
                     <span>{req}</span>
                     <button
@@ -244,7 +260,7 @@ export default function OpportunityForm({ onSave, onCancel, initialData }: Oppor
                 </Button>
               </div>
               <div className="flex flex-wrap gap-2 mt-2">
-                {formData.skills.map((skill, index) => (
+                {formData.skills.map((skill: string, index: number) => (
                   <Badge key={index} variant="outline" className="flex items-center space-x-1">
                     <span>{skill}</span>
                     <button

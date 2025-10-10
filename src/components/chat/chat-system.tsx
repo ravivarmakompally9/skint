@@ -15,8 +15,6 @@ import {
   MoreVertical,
   Search,
   Users,
-  Online,
-  Offline,
   Clock,
   Check,
   CheckCheck

@@ -535,7 +535,7 @@ export function NetworkingHub() {
       </CardHeader>
       <CardContent>
         <Tabs value={activeTab} onValueChange={setActiveTab}>
-          <TabsList className="grid w-full grid-cols-2">
+          <TabsList className="w-full overflow-x-auto scrollbar-hide">
             <TabsTrigger value="mentors">Mentors</TabsTrigger>
             <TabsTrigger value="events">Events</TabsTrigger>
           </TabsList>

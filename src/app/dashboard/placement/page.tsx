@@ -118,7 +118,7 @@ export default function PlacementDashboard() {
                 <span className="text-white font-bold text-lg">S</span>
               </div>
               <span className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
-                Skint
+                Prashiskshan
               </span>
             </Link>
             
@@ -231,7 +231,7 @@ export default function PlacementDashboard() {
 
         {/* Main Content Tabs */}
         <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
-          <TabsList className="grid w-full grid-cols-7">
+          <TabsList className="w-full overflow-x-auto scrollbar-hide">
             <TabsTrigger value="overview">Overview</TabsTrigger>
             <TabsTrigger value="recruiters">Recruiters</TabsTrigger>
             <TabsTrigger value="jobs">Job Approval</TabsTrigger>

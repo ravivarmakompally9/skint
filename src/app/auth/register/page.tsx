@@ -89,7 +89,7 @@ export default function RegisterPage() {
             </div>
             <CardTitle className="text-2xl font-bold">Create Account</CardTitle>
             <CardDescription>
-              Join Skint and start your placement journey
+              Join Prashiskshan and start your placement journey
             </CardDescription>
           </CardHeader>
           
